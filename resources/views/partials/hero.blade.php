@@ -1,4 +1,4 @@
-<div class="container mx-auto">
+<div class="">
 
     <!-- Section: Details -->
     <section class="my-20 max-w-6xl mx-auto">
