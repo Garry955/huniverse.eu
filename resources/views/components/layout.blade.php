@@ -12,7 +12,7 @@
 </head>
 <body class="bg-blue-100 "> 
     @include('partials.header')
-    <main class="h-screen">
+    <main class="">
         {{$slot}}
     </main>
     @include('partials.footer')

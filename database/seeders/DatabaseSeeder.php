@@ -25,6 +25,7 @@ class DatabaseSeeder extends Seeder
                 [
                     "name" => "Product-" . $i,
                     "description" => "Random description" . $i,
+                    "image" => "",
                     "link" => "#",
                     "price" => $i * 1000,
                     "stock" => $i
