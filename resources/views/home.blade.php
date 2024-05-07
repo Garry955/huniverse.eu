@@ -1,4 +1,7 @@
 <x-layout>
-    ez a home.blade.php
+    <section class="main">
+
+        @include('partials.hero')
+    </section>
 
 </x-layout>
