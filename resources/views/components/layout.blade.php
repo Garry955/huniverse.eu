@@ -9,7 +9,7 @@
 </head>
 <body class="bg-blue-500 "> 
     @include('partials.header')
-    <main >
+    <main class="h-screen">
         {{$slot}}
     </main>
     @include('partials.footer')
