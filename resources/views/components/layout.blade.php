@@ -7,7 +7,7 @@
     @vite('resources/css/app.css')
     <title>Huniverse.eu</title>
 </head>
-<body class="bg-blue-500 "> 
+<body class="bg-blue-100 "> 
     @include('partials.header')
     <main class="h-screen">
         {{$slot}}
