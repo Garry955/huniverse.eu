@@ -4,7 +4,7 @@
             <a href="/" class="-m-1.5 p-1.5">
                 <span class="sr-only">Huniverse.eu</span>
                 <img class="h-8 w-auto" src="https://tailwindui.com/img/logos/mark.svg?color=indigo&shade=600"
-                    alt="">
+                    alt="Huniverse.eu">
             </a>
         </div>
         <div class="flex lg:hidden">
@@ -24,14 +24,17 @@
             <a href="#" class="text-lg font-semibold leading-6 text-gray-900">Rólunk</a>
         </div>
         <div class="hidden lg:flex lg:flex-1 lg:justify-end">
-            <a href="#" class="text-lg font-semibold leading-6 text-gray-900 mr-2">KOSÁR</a>
+            <a href="{{ route('cart.show') }}"
+                class="text-lg font-semibold leading-6 text-gray-900 mr-5 relative">Kosár<i
+                    class="fa-solid fa-cart-shopping"></i> <b
+                    class="absolute top-[-10px] right-[-15px] text-center z-10 border-solid bg-black text-sm text-white rounded-full block px-2">{{ $cartTotal }}</b></a>
             @if (Auth::check())
-                <a href="{{ route('user.edit') }}" class="text-lg font-semibold leading-6 text-gray-900 mr-2"><i
-                        class="fa-solid fa-user-large mr-1"></i>Profil <span aria-hidden="true"></span></a>
-                <a href="{{ route('logout') }}" class="text-lg font-semibold leading-6 text-gray-900 mr-2">
+                <a href="{{ route('user.edit') }}" class="text-lg font-semibold leading-6 text-gray-900 mr-5">Profil <i
+                        class="fa-solid fa-user-large"></i><span aria-hidden="true"></span></a>
+                <a href="{{ route('logout') }}" class="text-lg font-semibold leading-6 text-gray-900">
                     Kilépés<i class="fa-solid fa-right-from-bracket ml-1"></i> <span aria-hidden="true"></span></a>
             @else
-                <a href="{{ route('login') }}" class="text-lg font-semibold leading-6 text-gray-900 mr-2"><i
+                <a href="{{ route('login') }}" class="text-lg font-semibold leading-6 text-gray-900"><i
                         class="fa-solid fa-user-large mr-1"></i>Belépés <span aria-hidden="true"></span></a>
             @endif
         </div>

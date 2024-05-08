@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\CartController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\ProductController;
@@ -34,3 +35,5 @@ Route::controller(AuthController::class)->group(function () {
 
 Route::get('/user/edit', [UserController::class, 'edit'])->name('user.edit');
 Route::post('/user/update', [UserController::class, 'update'])->name('user.update');
+
+Route::get('cart/show', [CartController::class, 'show'])->name('cart.show');

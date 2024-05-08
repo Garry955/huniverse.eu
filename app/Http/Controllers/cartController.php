@@ -3,63 +3,56 @@
 namespace App\Http\Controllers;
 
 use App\Models\Cart;
+use App\Models\Product;
+use App\Models\CartDetail;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Session;
 
-class cartController extends Controller
+class CartController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     */
-    public function index()
+    public function addCart(Product $product, Request $request)
     {
-        //
+        $customer_id = auth()->user()->id ?? Session::getId();
+        if (!Cart::where('customer_id', $customer_id)->first()) {
+            $cart = Cart::create(['customer_id' => $customer_id])->first();
+        } else {
+            $cart = Cart::where('customer_id', $customer_id)->first();
+        }
+        if ($request->quantity == 0) {
+            CartDetail::where(
+                ['cart_id' => $cart->id, 'product_id' => $product->id]
+            )->delete();
+        } else {
+            CartDetail::updateOrCreate(
+                ['cart_id' => $cart->id, 'product_id' => $product->id],
+                ['quantity' => $request->quantity]
+            );
+        }
+
+        return redirect()->back()->with('message', $product->name . ' added to your cart');
     }
 
-    /**
-     * Show the form for creating a new resource.
-     */
-    public function create()
+    public function show()
     {
-        //
+        $cartTotal = Cart::getTotal() ?? 0;
+        $customer_id = auth()->user() ? auth()->user()->id : Session::getId();
+        $cartID = Cart::where('customer_id', $customer_id)->first()?->id;
+        $cartItems = CartDetail::where('cart_id', $cartID)->with('product')->get();
+        $totalPrice = 0;
+        foreach ($cartItems as $item) {
+            $totalPrice += ($item->quantity * $item->product->price);
+        }
+        return view('cart.show')->with([
+            'cartTotal' => $cartTotal,
+            'cartItems' => $cartItems,
+            'totalPrice' => $totalPrice,
+            'cartID' => $cartID
+        ]);
     }
 
-    /**
-     * Store a newly created resource in storage.
-     */
-    public function store(Request $request)
-    {
-        //
-    }
-
-    /**
-     * Display the specified resource.
-     */
-    public function show(Cart $cart)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     */
-    public function edit(Cart $cart)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     */
-    public function update(Request $request, Cart $cart)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     */
     public function destroy(Cart $cart)
     {
-        //
+        $cart->delete();
+        return redirect('/')->with('message', 'Cart deleted successfully');
     }
 }
