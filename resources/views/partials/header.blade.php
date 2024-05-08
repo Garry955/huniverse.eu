@@ -1,29 +1,40 @@
 <header class="bg-white">
     <nav class="mx-auto flex max-w-7xl items-center justify-between p-6 lg:px-8" aria-label="Global">
-      <div class="flex lg:flex-1">
-        <a href="/" class="-m-1.5 p-1.5">
-          <span class="sr-only">Huniverse.eu</span>
-          <img class="h-8 w-auto" src="https://tailwindui.com/img/logos/mark.svg?color=indigo&shade=600" alt="">
-        </a>
-      </div>
-      <div class="flex lg:hidden">
-        <button type="button" class="-m-2.5 inline-flex items-center justify-center rounded-md p-2.5 text-gray-700">
-          <span class="sr-only">Open main menu</span>
-          <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true">
-            <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" />
-          </svg>
-        </button>
-      </div>
-      <div class="hidden lg:flex lg:gap-x-12">         
-        <a href="#" class="text-lg font-semibold leading-6 text-gray-900">Termékek</a>
-        <a href="#" class="text-lg font-semibold leading-6 text-gray-900">Kapcsolat</a>
-        <a href="#" class="text-lg font-semibold leading-6 text-gray-900">Rólunk</a>
-      </div>
-      <div class="hidden lg:flex lg:flex-1 lg:justify-end">
-        <a href="#" class="text-lg font-semibold leading-6 text-gray-900 mr-2">KOSÁR</a>
-        <a href="#" class="text-lg font-semibold leading-6 text-gray-900 mr-2">Regisztráció <span aria-hidden="true">&rarr;</span></a>
-        <a href="#" class="text-lg font-semibold leading-6 text-gray-900 mr-2">Belépés <span aria-hidden="true">&rarr;</span></a>
-      </div>
+        <div class="flex lg:flex-1">
+            <a href="/" class="-m-1.5 p-1.5">
+                <span class="sr-only">Huniverse.eu</span>
+                <img class="h-8 w-auto" src="https://tailwindui.com/img/logos/mark.svg?color=indigo&shade=600"
+                    alt="">
+            </a>
+        </div>
+        <div class="flex lg:hidden">
+            <button type="button"
+                class="-m-2.5 inline-flex items-center justify-center rounded-md p-2.5 text-gray-700">
+                <span class="sr-only">Open main menu</span>
+                <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"
+                    aria-hidden="true">
+                    <path stroke-linecap="round" stroke-linejoin="round"
+                        d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" />
+                </svg>
+            </button>
+        </div>
+        <div class="hidden lg:flex lg:gap-x-12">
+            <a href="{{ route('product.index') }}" class="text-lg font-semibold leading-6 text-gray-900">Termékek</a>
+            <a href="#" class="text-lg font-semibold leading-6 text-gray-900">Kapcsolat</a>
+            <a href="#" class="text-lg font-semibold leading-6 text-gray-900">Rólunk</a>
+        </div>
+        <div class="hidden lg:flex lg:flex-1 lg:justify-end">
+            <a href="#" class="text-lg font-semibold leading-6 text-gray-900 mr-2">KOSÁR</a>
+            @if (Auth::check())
+                <a href="{{ route('user.edit') }}" class="text-lg font-semibold leading-6 text-gray-900 mr-2"><i
+                        class="fa-solid fa-user-large mr-1"></i>Profil <span aria-hidden="true"></span></a>
+                <a href="{{ route('logout') }}" class="text-lg font-semibold leading-6 text-gray-900 mr-2">
+                    Kilépés<i class="fa-solid fa-right-from-bracket ml-1"></i> <span aria-hidden="true"></span></a>
+            @else
+                <a href="{{ route('login') }}" class="text-lg font-semibold leading-6 text-gray-900 mr-2"><i
+                        class="fa-solid fa-user-large mr-1"></i>Belépés <span aria-hidden="true"></span></a>
+            @endif
+        </div>
     </nav>
     <!-- Mobile menu, show/hide based on menu open state. -->
     {{-- <div class="lg:hidden" role="dialog" aria-modal="true">
@@ -79,4 +90,4 @@
         </div>
       </div>
     </div> --}}
-  </header>
+</header>
