@@ -19,7 +19,6 @@
         <div class="mx-auto justify-center px-6 md:flex md:space-x-6 xl:px-0">
             <div class="rounded-lg md:w-2/3">
                 @forelse ($cartItems as $item)
-                    <dd>{{ $item }}</dd>
                     <div class="justify-between mb-6 rounded-lg bg-white p-6 shadow-md sm:flex sm:justify-start">
                         <img src="{{ $item->product->image ? asset($item->product->image) : asset('images/no-image.png') }}"
                             alt="product-image" class="w-full rounded-lg sm:w-40" />
@@ -79,11 +78,12 @@
                         <p class="text-sm text-right text-gray-700">Áfával</p>
                     </div>
                 </div>
-                <form method="POST" action="{{ route('order') }}">
+                <form method="POST" action="{{ route('order.show') }}">
                     @csrf
                     <input type="hidden" value="{{ $totalPrice }}">
                     <button type="submit"
-                        class="mt-6 w-full rounded-md bg-blue-500 py-1.5 font-medium text-blue-50 hover:bg-blue-600">Megrendelés</button>
+                        class="mt-6 w-full rounded-md bg-blue-500 py-1.5 font-medium text-blue-50 hover:bg-blue-600">Adatok
+                        megadása</button>
 
                 </form>
             </div>

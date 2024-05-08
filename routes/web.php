@@ -4,6 +4,7 @@ use App\Http\Controllers\AuthController;
 use App\Http\Controllers\CartController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\OrderController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\UserController;
 
@@ -41,3 +42,6 @@ Route::post('/cart/addCart/{product}', [CartController::class, 'addCart'])->name
 Route::post('/cart/deleteItem/{cart}', [CartController::class, 'deleteItem'])->name('cart.deleteItem');
 Route::delete('/cart/delete/{cart}', [CartController::class, 'destroy'])->name('cart.delete');
 Route::post('/cart/updateItem/{cart}', [CartController::class, 'updateItem'])->name('cart.updateItem');
+
+Route::post('/order/show', [OrderController::class, 'show'])->name('order.show');
+Route::post('/order/store', [OrderController::class, 'store'])->name('order.store');
