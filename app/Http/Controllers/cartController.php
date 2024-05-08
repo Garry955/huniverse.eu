@@ -29,7 +29,7 @@ class CartController extends Controller
             );
         }
 
-        return redirect()->back()->with('message', $product->name . ' added to your cart');
+        return redirect()->back()->with('message', $product->name . ' a kosárba helyezve.');
     }
 
     public function show()
@@ -54,5 +54,26 @@ class CartController extends Controller
     {
         $cart->delete();
         return redirect('/')->with('message', 'Cart deleted successfully');
+    }
+
+    public function deleteItem(Cart $cart, Request $request)
+    {
+        CartDetail::where([
+            'cart_id' => $cart->id,
+            'product_id' => $request->item_id
+        ])->delete();
+
+        return back()->with('message', 'A termék eltávolítva a kosárból');
+    }
+
+    public function updateItem(Cart $cart, Request $request)
+    {
+        CartDetail::where([
+            'cart_id' => $cart->id,
+            'product_id' => $request->item_id
+        ])->update([
+            'quantity' => $request->quantity
+        ]);
+        return back()->with('message', 'A termék mennyiség módosítva');
     }
 }

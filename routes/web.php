@@ -20,7 +20,7 @@ use App\Http\Controllers\UserController;
 
 Route::get('/', [HomeController::class, 'index'])->name('home');
 
-Route::resource('product', ProductController::class);
+Route::resource('/product', ProductController::class);
 
 Route::controller(AuthController::class)->group(function () {
     //Show Login form
@@ -30,10 +30,14 @@ Route::controller(AuthController::class)->group(function () {
     // Logout user
     Route::get('/logout', 'logout')->name('logout')->middleware('auth');
     // Register user
-    Route::post('store', 'store')->name('auth.store');
+    Route::post('/store', 'store')->name('auth.store');
 });
 
 Route::get('/user/edit', [UserController::class, 'edit'])->name('user.edit');
 Route::post('/user/update', [UserController::class, 'update'])->name('user.update');
 
-Route::get('cart/show', [CartController::class, 'show'])->name('cart.show');
+Route::get('/cart/show', [CartController::class, 'show'])->name('cart.show');
+Route::post('/cart/addCart/{product}', [CartController::class, 'addCart'])->name('cart.addCart');
+Route::post('/cart/deleteItem/{cart}', [CartController::class, 'deleteItem'])->name('cart.deleteItem');
+Route::delete('/cart/delete/{cart}', [CartController::class, 'destroy'])->name('cart.delete');
+Route::post('/cart/updateItem/{cart}', [CartController::class, 'updateItem'])->name('cart.updateItem');
