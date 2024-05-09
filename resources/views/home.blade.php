@@ -16,7 +16,7 @@
             </div>
 
         </div>
-        <div>
+        <div class="mb-20">
             <x-contact_form></x-contact_form>
         </div>
     </section>

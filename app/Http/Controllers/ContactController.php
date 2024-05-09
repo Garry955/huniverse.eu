@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Contact;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Mail;
 
 class ContactController extends Controller
 {
@@ -22,6 +23,19 @@ class ContactController extends Controller
         ]);
 
         Contact::create($formFields);
+
+        Mail::send(
+            'components.email',
+            array(
+                'name' => $request->get('name'),
+                'email' => $request->get('email'),
+                'user_message' => $request->get('message')
+            ),
+            function ($message) {
+                $message->from('infoHuniverse@gmail.com');
+                $message->to('garry955@gmail.com', 'Admin')->subject('Cloudways Feedback');
+            }
+        );
 
         return redirect()->back()->with('message', 'Sikeres üzenetküldés.');
     }
