@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Cart;
 use App\Models\Order;
 use App\Models\CartDetail;
+use App\Models\Product;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Session;
 
@@ -31,6 +32,17 @@ class OrderController extends Controller
 
     public function store(Request $request)
     {
+        $cart_items = json_decode($request->cart_items);
+        foreach ($cart_items as $product) {
+            $stock = $product->product->stock - $product->quantity;
+            dd($stock);
+            Product::where([
+                'id' => 'product_id'
+            ])->patch([
+                'stock' => $stock
+            ]);
+        }
+
         $request->validate([
             'name' => 'required',
             'email' => 'required|email',
@@ -47,9 +59,15 @@ class OrderController extends Controller
             'cart_items' => $request->cart_items,
             'order_total' => $request->order_total
         ];
-        Order::create($formFields);
-        Cart::destroy($request->cart_id);
+        $order = Order::create($formFields);
+        if ($order) {
+            Cart::destroy($request->cart_id);
+            $cart_items = json_decode($request->cart_items);
+            foreach ($cart_items as $product) {
+                Product::where([]);
+            }
+        }
 
-        return redirect('user/edit')->with('message', 'Sikeres vásárlás!');
+        return redirect('/')->with('message', 'Sikeres vásárlás!');
     }
 }

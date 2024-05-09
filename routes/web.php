@@ -43,5 +43,5 @@ Route::post('/cart/deleteItem/{cart}', [CartController::class, 'deleteItem'])->n
 Route::delete('/cart/delete/{cart}', [CartController::class, 'destroy'])->name('cart.delete');
 Route::post('/cart/updateItem/{cart}', [CartController::class, 'updateItem'])->name('cart.updateItem');
 
-Route::post('/order/show', [OrderController::class, 'show'])->name('order.show');
+Route::get('/order/show', [OrderController::class, 'show'])->name('order.show');
 Route::post('/order/store', [OrderController::class, 'store'])->name('order.store');

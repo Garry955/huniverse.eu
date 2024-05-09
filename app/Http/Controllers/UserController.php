@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Order;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Validation\Rule;
@@ -26,9 +27,14 @@ class UserController extends Controller
         return redirect()->back()->with('message', $user->id . ' - ' . $user->name . ' was deleted successfully.');
     }
 
-    public function edit(User $user)
+    public function edit()
     {
-        return view('user.edit')->with(['user' => $user]);
+
+        $orders = Order::where([
+            'customer_email' => auth()->user()->email
+        ])->latest()->get();
+
+        return view('user.edit')->with(['orders' => $orders]);
     }
 
     public function update(Request $request)

@@ -1,7 +1,7 @@
 <x-layout>
-    <section class="h-screen container mx-auto">
-        <div class="h-full">
-            <div class="flex h-full flex-wrap mt-20 justify-center lg:justify-between">
+    <section class="container mx-auto">
+        <div class="">
+            <div class="flex flex-wrap mt-20 justify-center lg:justify-between">
                 <!-- Left column container with background-->
                 <div class="shrink-1 mb-12 grow-0 basis-auto md:mb-0 md:w-9/12 md:shrink-0 lg:w-5/12 xl:w-5/12">
                     <form method="POST" action="{{ route('user.update') }}">
@@ -144,7 +144,7 @@
                 </div>
 
                 <!-- Right column container -->
-                <div class="mb-12 md:mb-0 md:w-8/12 lg:w-5/12 xl:w-5/12">
+                <div class="mb-12 md:mb-10 md:w-8/12 lg:w-5/12 xl:w-5/12">
                     <!-- Separator between social media sign in and email/password sign in -->
                     <div
                         class="my-4 flex items-center before:mt-0.5 before:flex-1 before:border-t before:border-neutral-300 after:mt-0.5 after:flex-1 after:border-t after:border-neutral-300 dark:before:border-neutral-500 dark:after:border-neutral-500">
@@ -152,7 +152,38 @@
                             Rendeléseim
                         </p>
                     </div>
-                    Még nincs rendelés
+
+                    <div class="mt-6 rounded-lg border bg-white p-6 shadow-md md:mt-0 ml-0">
+                        <div class="rounded-lg mb-10">
+                            @forelse ($orders as $item)
+                                <div class="bg-white p-6 border-b-2 border-solid">
+                                    {{-- <img src="{{ $item->image ? asset($item->product->image) : asset('images/no-image.png') }}"
+                                        alt="product-image" class="rounded-lg h-[115px] w-auto" /> --}}
+                                    <div class="sm:ml-4 sm:w-full text-right">
+                                        <div class="mt-5 sm:mt-0">
+                                            <b class="mt-1 text-gray-700">Rendelés azonosító:
+                                                {{ $item->id }}</b>
+                                            <p class="mt-1">Rendelés dátum: {{ $item->created_at }}</p>
+                                            <p>Rendelés összeg: {{ $item->order_total }} Ft</p>
+                                            {{-- <h2 class="text-lg font-bold text-gray-900">{{ $item->product->name }}
+                                            </h2>
+                                            <p class="mt-1 text-xs text-gray-700">{{ $item->product->description }}
+                                            </p>
+                                            <b class="mt-1 text-xs text-gray-700">Ár: {{ $item->product->price }}
+                                                Ft/db</b>
+                                            <p class="mt-1 text-xs text-gray-700">Mennyiség: {{ $item->quantity }}
+                                                Ft/db</p>
+                                            <p class="mt-1 text-xs text-gray-700">összeg:
+                                                {{ $item->quantity * $item->product->price }} Ft/db
+                                            </p> --}}
+                                        </div>
+                                    </div>
+                                </div>
+                            @empty
+                                <h5 class="font-bold">Még nincs leadott rendelés.</h5>
+                            @endforelse
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>

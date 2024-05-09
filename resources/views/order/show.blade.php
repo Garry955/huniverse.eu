@@ -1,9 +1,4 @@
 <x-layout>
-    <!-- component -->
-    {{-- 'cartTotal' => $cartTotal,
-                'cartItems' => $cartItems,
-                'totalPrice' => $totalPrice,
-                'cartID' => $cartID --}}
     <style>
         @layer utilities {
 
@@ -18,7 +13,7 @@
         <div class="mx-auto justify-center px-6 md:flex  xl:px-0">
             <div class="rounded-lg md:w-3/4">
                 <div class="mb-12 lg:w-3/4">
-                    <form action="{{ route('order.store') }}" method="POST">
+                    <form method="POST" action="{{ route('order.store') }}">
                         @csrf
                         <input type="hidden" name="cart_items" id="cart_items" value="{{ $cartItems }}" />
                         <input type="hidden" name="order_total" id="cart_total" value="{{ $totalPrice }}" />
@@ -133,7 +128,7 @@
                     </form>
                 </div>
             </div>
-            <!-- Sub total -->
+            <!-- Cart details -->
             <div class="mt-6 h-full rounded-lg border bg-white p-6 shadow-md md:mt-0 md:w-2/5 ml-0">
                 <h1 class="mb-5 text-2xl font-bold">Kosár tartalma</h1>
                 <div class="rounded-lg mb-10">
