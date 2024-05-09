@@ -168,15 +168,17 @@
                     <div class="mt-6 rounded-lg border bg-white p-6 shadow-md md:mt-0 ml-0">
                         <div class="rounded-lg mb-10">
                             @forelse ($orders as $item)
-                                <div class="bg-white p-6 border-b-2 border-solid">
-                                    {{-- <img src="{{ $item->image ? asset($item->product->image) : asset('images/no-image.png') }}"
-                                        alt="product-image" class="rounded-lg h-[115px] w-auto" /> --}}
-                                    <div class="sm:ml-4 sm:w-full text-right">
+                                <div class="bg-white p-6 border-b-2 border-solid relative">
+                                    <a href="{{ route('order.show', $item->id) }}"
+                                        class="absolute top-0 left-0 right-0 bottom-0 z-10"></a>
+                                    <div class="sm:ml-4 sm:w-full">
                                         <div class="mt-5 sm:mt-0">
                                             <b class="mt-1 text-gray-700">Rendelés azonosító:
                                                 {{ $item->id }}</b>
                                             <p class="mt-1">Rendelés dátum: {{ $item->created_at }}</p>
-                                            <p>Rendelés összeg: {{ $item->order_total }} Ft</p>
+                                            <p>Rendelés összeg: {{ $item->order_total }} Ft</p><i
+                                                class=" absolute -z-0 top-[50%] translate-y-[-50%] right-10 text-4xl text-primary font-bold fa-solid fa-angle-right"></i>
+
                                         </div>
                                     </div>
                                 </div>

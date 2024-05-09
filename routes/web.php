@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\CartController;
+use App\Http\Controllers\ContactController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\OrderController;
@@ -52,3 +53,7 @@ Route::get('/orders', [OrderController::class, 'index'])->name('order.index')->m
 Route::post('/order/store', [OrderController::class, 'store'])->name('order.store')->middleware('auth');
 Route::get('/order/show/{order}', [OrderController::class, 'show'])->name('order.show')->middleware('auth');
 Route::get('/order/success', [OrderController::class, 'success'])->name('order.success');
+
+//Contact routes
+Route::post('/contact-us/store', [ContactController::class, 'store'])->name('contact.store');
+Route::get('/contact-us', [ContactController::class, 'index'])->name('contact');
