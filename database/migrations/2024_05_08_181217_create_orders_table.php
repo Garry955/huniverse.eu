@@ -17,7 +17,7 @@ return new class extends Migration
             $table->string('customer_email');
             $table->string('customer_phone');
             $table->string('customer_address');
-            $table->string('customer_comment');
+            $table->string('customer_comment')->nullable;
             $table->json('cart_items');
             $table->bigInteger('order_total');
             $table->timestamps();

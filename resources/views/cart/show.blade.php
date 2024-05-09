@@ -24,13 +24,17 @@
             @endif
             @forelse ($cartItems as $item)
                 <div class="justify-between mb-6 rounded-lg bg-white p-6 shadow-md sm:flex sm:justify-start">
+                    <a href="{{ route('product.show', $item->product->id) }}" />
                     <img src="{{ $item->product->image ? asset($item->product->image) : asset('images/no-image.png') }}"
                         alt="product-image" class="w-full rounded-lg sm:w-40" />
                     <div class="sm:ml-4 sm:flex sm:w-full sm:justify-between">
                         <div class="mt-5 sm:mt-0">
-                            <h2 class="text-lg font-bold text-gray-900">{{ $item->product->name }}</h2>
-                            <p class="mt-1 text-xs text-gray-700">{{ $item->product->description }}</p>
-                            <b class="mt-1 text-xs text-gray-700">Ár: {{ $item->product->price }} Ft/db</b>
+                            <a href="{{ route('product.show', $item->product->id) }}"
+                                class="text-lg font-bold text-gray-900">{{ $item->product->name }}</a>
+                            <p class="mt-1 text-sm text-gray-700">{{ $item->product->description }}</p>
+                            <b class="mt-1 text-sm text-gray-700">Ár: {{ $item->product->price }} Ft/db</b>
+                            <p class="mt-1 text-sm text-gray-700">Készleten: {{ $item->product->stock }}</p>
+
                         </div>
                         <div class="pt-20 flex justify-between sm:space-y-6 sm:mt-0 sm:block sm:space-x-6">
                             <div class="border-gray-100">
@@ -83,10 +87,9 @@
                         <p class="text-sm text-right text-gray-700">Áfával</p>
                     </div>
                 </div>
-                <a href="{{ route('order.show') }}" type="submit"
+                <a href="{{ route('cart.checkout') }}" type="submit"
                     class="block text-center mt-6 w-full rounded-md bg-blue-500 py-1.5 font-medium text-blue-50 hover:bg-blue-600">Adatok
                     megadása</a>
-
             </div>
         @endif
     </div>

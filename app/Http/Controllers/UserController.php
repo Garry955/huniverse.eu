@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Order;
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Validation\Rule;
 
 class UserController extends Controller
@@ -21,10 +22,12 @@ class UserController extends Controller
     {
     }
 
-    public function destroy(User $user)
+    public function destroy()
     {
+        $userId = Auth::user()->id;
+        $user = User::findOrFail($userId);
         $user->delete();
-        return redirect()->back()->with('message', $user->id . ' - ' . $user->name . ' was deleted successfully.');
+        return redirect('/')->with('message', $user->name . ' profilja sikeresen törölve lett.');
     }
 
     public function edit()
@@ -32,7 +35,7 @@ class UserController extends Controller
 
         $orders = Order::where([
             'customer_email' => auth()->user()->email
-        ])->latest()->get();
+        ])->latest()->take(5)->get();
 
         return view('user.edit')->with(['orders' => $orders]);
     }

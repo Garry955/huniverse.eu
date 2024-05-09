@@ -76,4 +76,22 @@ class CartController extends Controller
         ]);
         return back()->with('message', 'A termék mennyiség módosítva');
     }
+
+    public function checkout()
+    {
+        $cartTotal = Cart::getTotal() ?? 0;
+        $customer_id = auth()->user() ? auth()->user()->id : Session::getId();
+        $cartID = Cart::where('customer_id', $customer_id)->first()?->id;
+        $cartItems = CartDetail::where('cart_id', $cartID)->with('product')->get();
+        $totalPrice = 0;
+        foreach ($cartItems as $item) {
+            $totalPrice += ($item->quantity * $item->product->price);
+        }
+        return view('cart.checkout')->with([
+            'cartTotal' => $cartTotal,
+            'cartItems' => $cartItems,
+            'totalPrice' => $totalPrice,
+            'cartID' => $cartID
+        ]);
+    }
 }

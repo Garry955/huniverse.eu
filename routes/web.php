@@ -34,14 +34,21 @@ Route::controller(AuthController::class)->group(function () {
     Route::post('/store', 'store')->name('auth.store');
 });
 
-Route::get('/user/edit', [UserController::class, 'edit'])->name('user.edit');
-Route::post('/user/update', [UserController::class, 'update'])->name('user.update');
+//User routes
+Route::get('/user/edit', [UserController::class, 'edit'])->name('user.edit')->middleware('auth');
+Route::post('/user/update', [UserController::class, 'update'])->name('user.update')->middleware('auth');
+Route::delete('/user/delete', [UserController::class, 'destroy'])->name('user.destroy')->middleware('auth');
 
+//Cart routes
 Route::get('/cart/show', [CartController::class, 'show'])->name('cart.show');
 Route::post('/cart/addCart/{product}', [CartController::class, 'addCart'])->name('cart.addCart');
 Route::post('/cart/deleteItem/{cart}', [CartController::class, 'deleteItem'])->name('cart.deleteItem');
 Route::delete('/cart/delete/{cart}', [CartController::class, 'destroy'])->name('cart.delete');
 Route::post('/cart/updateItem/{cart}', [CartController::class, 'updateItem'])->name('cart.updateItem');
+Route::get('/cart/checkout', [CartController::class, 'checkout'])->name('cart.checkout');
 
-Route::get('/order/show', [OrderController::class, 'show'])->name('order.show');
-Route::post('/order/store', [OrderController::class, 'store'])->name('order.store');
+//Order routes
+Route::get('/orders', [OrderController::class, 'index'])->name('order.index')->middleware('auth');
+Route::post('/order/store', [OrderController::class, 'store'])->name('order.store')->middleware('auth');
+Route::get('/order/show/{order}', [OrderController::class, 'show'])->name('order.show')->middleware('auth');
+Route::get('/order/success', [OrderController::class, 'success'])->name('order.success');

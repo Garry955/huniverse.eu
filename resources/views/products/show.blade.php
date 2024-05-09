@@ -33,9 +33,16 @@
                                 <input type="number" id="quantity" name="quantity" min="0"
                                     max="{{ $product->stock }}" step="1" value="{{ $quantity ?? 1 }}"
                                     class="border-form-stroke text-body-color placeholder-body-color focus:border-primary active:border-primary rounded-lg border-[1.5px] py-2 px-5 font-medium outline-none transition disabled:cursor-default disabled:bg-[#F5F7FD]" />
-                                <button type="submit"
-                                    class="bg-primary inline-flex items-center justify-center rounded-md py-2 px-10 text-center text-base font-normal text-white ">
-                                    Kosárba</button>
+                                @if ($product->stock)
+                                    <button type="submit"
+                                        class="bg-primary inline-flex items-center justify-center rounded-md py-2 px-10 text-center text-base font-normal text-white ">
+                                        Kosárba</button>
+                                @endif
+                                @if (!$product->stock)
+                                    <div
+                                        class="bg-secondary-700 cursor-not-allowed inline-flex items-center justify-center rounded-md py-2 px-10 text-center text-base font-normal text-white ">
+                                        Kosárba</div>
+                                @endif
                             </form>
                         </div>
 
@@ -45,7 +52,7 @@
                                 <b class="mr-2 text-green-500">Készleten(/db.) {{ $product->stock }} darab</b>
                             @else
                                 <i class="fa-regular fa-circle-xmark text-red-500 text-xl"></i>
-                                <b class="mr-2 text-red-500 text-xl">A termék jelenleg nincs készleten. </b>
+                                <b class="mr-2 text-red-500">A termék jelenleg nincs készleten. </b>
                             @endif
                         </span>
                     </div>
