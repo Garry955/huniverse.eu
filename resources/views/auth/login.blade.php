@@ -69,7 +69,7 @@
                     </form>
                 </div>
 
-                <!-- Right column container -->
+                <!-- Right column container /Register -->
                 <div class="mb-12 md:mb-0 md:w-8/12 lg:w-5/12 xl:w-5/12">
                     <form action="{{ route('auth.store') }}" method="POST">
                         @csrf

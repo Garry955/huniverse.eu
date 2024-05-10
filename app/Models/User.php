@@ -45,4 +45,11 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
         'password' => 'hashed',
     ];
+
+    public function isAdmin()
+    {
+        if ($this->is_admin) {
+            return true;
+        } else return false;
+    }
 }

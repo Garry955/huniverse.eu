@@ -18,3 +18,15 @@
 p {
     @apply leading-[1.6];
 }
+
+.scrolled .main {
+    margin-top: 40px;
+}
+
+.scrolled header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 10;
+}

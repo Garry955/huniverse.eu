@@ -21,6 +21,7 @@ class ProductController extends Controller
     public function create()
     {
         //
+        return view('products.create');
     }
 
     /**
@@ -28,7 +29,17 @@ class ProductController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        // dd($request->all());
+        // {{-- ['name', 'description', 'image', 'link', 'price', 'stock']; --}}
+        $formFields = $request->validate([
+            'name' => 'required|min:6',
+            'description' => 'required|min:6',
+            'stock' => 'required|numeric',
+            'price' => 'required|numeric'
+        ]);
+        Product::create($formFields);
+
+        return redirect()->back()->with('message', 'Sikeres termékfelvétel.');
     }
 
     /**
@@ -47,7 +58,7 @@ class ProductController extends Controller
      */
     public function edit(Product $product)
     {
-        //
+        return view('products.edit', ['product' => $product]);
     }
 
     /**
@@ -55,7 +66,18 @@ class ProductController extends Controller
      */
     public function update(Request $request, Product $product)
     {
-        //
+        $formFields = $request->validate([
+            'name' => 'required|min:6',
+            'description' => 'required|min:6',
+            'price' => 'required|numeric',
+            'stock' => 'required|numeric'
+        ]);
+        $formFields['price'] = $request->price;
+        $formFields['link'] = $request->link;
+
+        $product->update($formFields);
+
+        return redirect()->back()->with('message', 'Termék sikeresen módosítva');
     }
 
     /**
@@ -63,6 +85,8 @@ class ProductController extends Controller
      */
     public function destroy(Product $product)
     {
-        //
+
+        $product->delete();
+        return redirect('/admin/dashboard')->with('message', '#' . $product->id . ' - ' . $product->name . ' sikeresen törölve!');
     }
 }
