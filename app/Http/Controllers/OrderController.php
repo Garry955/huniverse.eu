@@ -23,8 +23,11 @@ class OrderController extends Controller
 
     public function show(Order $order)
     {
-        $orderItems = json_decode($order->cart_items);
-        return view('order.show', ['order' => $order, 'orderItems' => $orderItems]);
+        if (auth()->user()->email == $order->customer_email) {
+            $orderItems = json_decode($order->cart_items);
+            return view('order.show', ['order' => $order, 'orderItems' => $orderItems]);
+        }
+        return redirect('/user/edit');
     }
 
     public function store(Request $request)
@@ -66,5 +69,28 @@ class OrderController extends Controller
     public function success()
     {
         return view('order.success');
+    }
+
+    public function list()
+    {
+
+        return view('admin.order_list', ['orders' => Order::latest()->paginate(10)]);
+    }
+
+    public function details(Order $order)
+    {
+
+        $orderItems = json_decode($order->cart_items);
+        return view('admin.order_details', ['order' => $order, 'orderItems' => $orderItems]);
+    }
+
+    public function destroy(Order $order)
+    {
+        if (auth()->user()->is_admin) {
+            $order->delete();
+
+            return redirect('admin/orders')->with('message', 'Rendelés #' . $order->id . ' sikeresen törölve.');
+        }
+        return response(403);
     }
 }

@@ -64,6 +64,10 @@ Route::get('/orders', [OrderController::class, 'index'])->name('order.index')->m
 Route::post('/order/store', [OrderController::class, 'store'])->name('order.store')->middleware('auth');
 Route::get('/order/show/{order}', [OrderController::class, 'show'])->name('order.show')->middleware('auth');
 Route::get('/order/success', [OrderController::class, 'success'])->name('order.success');
+//Admin order routes
+Route::get('/admin/orders', [OrderController::class, 'list'])->name('admin.orders')->middleware('isAdmin');
+Route::delete('/admin/order/delete/{order}', [OrderController::class, 'destroy'])->name('order.destroy')->middleware('isAdmin');
+Route::get('/admin/order/{order}', [OrderController::class, 'details'])->name('order.details')->middleware('isAdmin');
 
 //Contact routes
 Route::post('/contact-us/store', [ContactController::class, 'store'])->name('contact.store');

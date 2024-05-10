@@ -6,11 +6,7 @@
         <div class="p-3 w-full">
             <div class="head">
                 <div class="px-4 flex justify-between flex-row py-2 text-left border-b-2 w-full">
-                    <h2 class="text-2xl mb-2 font-bold text-gray-600">Termékek</h2>
-                    <a href="{{ route('product.create') }}" class="text-2xl mb-2 font-bold text-primary"><i
-                            class="fa-regular fa-square-plus mr-2"></i>Új
-                        termék
-                    </a>
+                    <h2 class="text-2xl mb-2 font-bold text-gray-600">Rendelések</h2>
                 </div>
             </div>
             <table class="min-w-full">
@@ -20,16 +16,13 @@
                             #ID
                         </th>
                         <th scope="col" class="text-xl font-bold text-gray-900 px-6 py-4 text-left">
-                            Kép
+                            Dátum
                         </th>
                         <th scope="col" class="text-xl font-bold text-gray-900 px-6 py-4 text-left">
                             Név
                         </th>
                         <th scope="col" class="text-xl font-bold text-gray-900 px-6 py-4 text-left">
-                            Ár(/db.)
-                        </th>
-                        <th scope="col" class="text-xl font-bold text-gray-900 px-6 py-4 text-left">
-                            Készlet
+                            Rendelés összege
                         </th>
                         <th scope="col" class="text-xl text-center font-bold text-gray-900 px-6 py-4 text-left">
                             Műveletek
@@ -38,28 +31,23 @@
                 </thead>
                 <tbody>
                     <x-admin-list>
-                        @forelse ($products as $product)
+                        @forelse ($orders as $order)
                             <tr class="bg-white border-b transition duration-300 ease-in-out hover:bg-gray-100">
                                 <td class="px-6 py-4 whitespace-nowrap text-xl font-medium text-gray-900">
-                                    {{ $product->id }}</td>
+                                    {{ $order->id }}</td>
                                 <td class="text-xl text-gray-900 font-light px-6 py-4 whitespace-nowrap">
-                                    <img src="{{ $product->image ? asset($product->image) : asset('images/no-image.png') }}"
-                                        alt="product-image" class="w-[52px]" />
-
+                                    {{ $order->created_at }}
+                                </td>
+                                <td class="text-xl font-bold text-gray-900 px-6 py-4 whitespace-nowrap">
+                                    {{ $order->customer_name }}
                                 </td>
                                 <td class="text-xl text-gray-900 font-light px-6 py-4 whitespace-nowrap">
-                                    {{ $product->name }}
-                                </td>
-                                <td class="text-xl text-gray-900 font-light px-6 py-4 whitespace-nowrap">
-                                    {{ $product->price }} Ft
-                                </td>
-                                <td class="text-xl text-gray-900 font-light px-6 py-4 whitespace-nowrap">
-                                    {{ $product->stock }} db.
+                                    {{ $order->order_total }} Ft
                                 </td>
                                 <td class="text-center text-2xl">
-                                    <a href="{{ route('product.edit', $product->id) }}" class="mr-8"><i
+                                    <a href="{{ route('order.details', $order->id) }}" class="mr-8"><i
                                             class="fa-solid fa-pen-to-square text-primary"></i></a>
-                                    <form class="inline-block" action="{{ route('product.destroy', $product->id) }}"
+                                    <form class="inline-block" action="{{ route('order.destroy', $order->id) }}"
                                         method="POST">
                                         @csrf
                                         @method('DELETE')
