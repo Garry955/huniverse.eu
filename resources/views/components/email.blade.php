@@ -1,10 +1,10 @@
-You received a message from : {{ $name }}
+Kapcsolatfelvételi üzenet küldője: {{ $name }}
+<b><br />
+    Email-cím: {{ $email }}
+</b><br />
 <p>
-    Name: {{ $name }}
+    Üzenet: {{ $user_message }}
 </p>
-<p>
-    Email: {{ $email }}
-</p>
-<p>
-    Message: {{ $user_message }}
+<p style="margin-top: 5px; font-style: bold; font-size: 8px;">
+    www.huniverse.eu
 </p>

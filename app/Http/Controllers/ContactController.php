@@ -31,9 +31,9 @@ class ContactController extends Controller
                 'email' => $request->get('email'),
                 'user_message' => $request->get('message')
             ),
-            function ($message) {
-                $message->from('infoHuniverse@gmail.com');
-                $message->to('garry955@gmail.com', 'Admin')->subject('Cloudways Feedback');
+            function ($message) use ($formFields) {
+                $message->from($formFields['email']);
+                $message->to('infoHuniverse@gmail.com', 'Admin')->subject('Kapcsolatfelvétel');
             }
         );
 
