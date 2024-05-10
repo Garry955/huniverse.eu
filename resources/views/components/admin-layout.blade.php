@@ -68,11 +68,13 @@
                     <i class="fa-solid fa-cart-shopping"></i>
                     <span>Rendelések</span>
                 </a>
-                <a href="#" class="px-4 py-3 flex items-center space-x-4 rounded-md text-gray-500 group">
+                <a href="{{ route('admin.users') }}"
+                    class="px-4 py-3 flex items-center space-x-4 rounded-md text-gray-500 group">
                     <i class="fa-solid fa-users"></i>
                     <span>Felhasználók</span>
                 </a>
-                <a href="#" class="px-4 py-3 flex items-center space-x-4 rounded-md text-gray-500 group">
+                <a href="{{ route('admin.contacts') }}"
+                    class="px-4 py-3 flex items-center space-x-4 rounded-md text-gray-500 group">
                     <i class="fa-regular fa-envelope"></i>
                     <span>Üzenetek</span>
                 </a>

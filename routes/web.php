@@ -72,10 +72,20 @@ Route::get('/admin/order/{order}', [OrderController::class, 'details'])->name('o
 //Contact routes
 Route::post('/contact-us/store', [ContactController::class, 'store'])->name('contact.store');
 Route::get('/contact-us', [ContactController::class, 'index'])->name('contact');
+//Admin/contact routes
+Route::get('/admin/contacts', [ContactController::class, 'contactList'])->name('admin.contacts')->middleware('isAdmin');
+Route::delete('/admin/contact/delete/{contact}', [ContactController::class, 'destroy'])->name('contact.destroy')->middleware('isAdmin');
 
 //Admin routes
 Route::get('/admin', [AdminController::class, 'index'])->name('admin.login');
 Route::get('/admin/login', [AdminController::class, 'authenticate'])->name('admin.authenticate');
 Route::get('/admin/dashboard', [AdminController::class, 'dashboard'])->name('admin.dashboard')->middleware('isAdmin');
 Route::get('/admin/logout', [AdminController::class, 'logout'])->name('admin.logout')->middleware('isAdmin');
-Route::get('/admin/products', [AdminController::class, 'listProducts'])->name('admin.products')->middleware('isAdmin');
+//Users @admin
+Route::get('/admin/users', [AdminController::class, 'listUsers'])->name('admin.users')->middleware('isAdmin');
+Route::delete('/admin/user/delete/{user}', [AdminController::class, 'deleteUser'])->name('admin.deleteUser')->middleware('isAdmin');
+Route::get('/admin/user/edit/{user}', [AdminController::class, 'editUser'])->name('admin.editUser')->middleware('isAdmin');
+Route::post('/admin/user/update/{user}', [AdminController::class, 'updateUser'])->name('admin.updateUser')->middleware('isAdmin');
+Route::get('/admin/user/create', [AdminController::class, 'createUser'])->name('admin.createUser')->middleware('isAdmin');
+Route::get('/admin/user/{user}', [AdminController::class, 'editUser'])->name('user.details')->middleware('isAdmin');
+Route::post('/admin/user/sore', [AdminController::class, 'storeUser'])->name('admin.storeUser')->middleware('isAdmin');

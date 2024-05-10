@@ -2,8 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\User;
 use App\Models\Product;
 use Illuminate\Http\Request;
+use Illuminate\Validation\Rule;
 
 class AdminController extends Controller
 {
@@ -48,8 +50,74 @@ class AdminController extends Controller
         return redirect('/admin')->with('message', 'Sikeres kijelentkezés!');
     }
 
-    public function listProducts()
+    public function listUsers()
     {
-        return view('admin.products_list');
+
+        return view('admin.user_list', ['users' => User::latest()->get()]);
+    }
+
+    public function deleteUser(User $user)
+    {
+        if (auth()->user()->id != $user->id && auth()->user()->is_admin) {
+            $user->delete();
+            return redirect('/admin/users')->with('message', $user->name . ' - felhasználó sikeresen törölve.');
+        } else {
+            return redirect()->back()->with('message', 'Sikertelen törlés.');
+        }
+    }
+
+    public function editUser(User $user)
+    {
+        return view('admin.edit_user', ['user' => $user]);
+    }
+
+    public function updateUser(User $user, Request $request)
+    {
+        $request->validate([
+            'name' => 'required|string|max:255',
+            'email' => [
+                'required',
+                'email',
+                'max:255',
+                Rule::unique('users')->ignore($user->id),
+            ]
+        ]);
+
+        $user->update([
+            'name' => $request->name,
+            'email' => $request->email,
+            'phone' => $request->phone,
+            'address' => $request->address
+        ]);
+
+        return redirect()->back()->with('message', 'Sikeres adatmódosítás!');
+    }
+
+    public function createUser()
+    {
+        return view('admin.create_user');
+    }
+
+    public function storeUser(Request $request)
+    {
+        $formFields = $request->validate([
+            'name' => 'required|min:6',
+            'email' => [
+                'required',
+                'email',
+                'max:255',
+                Rule::unique('users'),
+            ],
+            'password' => 'required|confirmed|min:6',
+        ]);
+        $formFields['phone'] = $request->phone;
+        $formFields['address'] = $request->address;
+        if ($request->is_admin) {
+            $formFields['is_admin'] = true;
+        }
+        $formFields['password'] = bcrypt($formFields['password']);
+        $user = User::create($formFields);
+
+        return redirect('/admin/users')->with('message', 'Felhasználó hozzáadva!');
     }
 }

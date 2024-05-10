@@ -2,9 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Requests\RegisterRequest;
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Validation\Rule;
+use App\Http\Requests\RegisterRequest;
 
 class AuthController extends Controller
 {
@@ -19,7 +20,12 @@ class AuthController extends Controller
         //Validation
         $formFields = $request->validate([
             'name' => 'required|min:6',
-            'email' => 'required|email',
+            'email' => [
+                'required',
+                'email',
+                'max:255',
+                Rule::unique('users'),
+            ],
             'password' => 'required|confirmed|min:6',
         ]);
         $formFields['phone'] = $request->phone;
