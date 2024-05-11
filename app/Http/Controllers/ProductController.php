@@ -30,17 +30,23 @@ class ProductController extends Controller
      */
     public function store(Request $request)
     {
-        // dd($request->all());
-        // {{-- ['name', 'description', 'image', 'link', 'price', 'stock']; --}}
         $formFields = $request->validate([
             'name' => 'required|min:6',
             'description' => 'required|min:6',
+            'price' => 'required|numeric',
             'stock' => 'required|numeric',
-            'price' => 'required|numeric'
         ]);
+        $formFields['link'] = $request->link;
+
+        //File upload
+        if ($request->hasFile('image')) {
+            $formFields['image'] = $request->file('image')->hashName();
+            $request->file('image')->store('/products/', 'public');
+        }
+
         Product::create($formFields);
 
-        return redirect()->back()->with('message', 'Sikeres termékfelvétel.');
+        return redirect('/admin/dashboard')->with('message', 'Sikeres termékfelvétel.');
     }
 
     /**

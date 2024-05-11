@@ -30,10 +30,6 @@ class SliderController extends Controller
         //File upload
         if ($request->hasFile('slider_image')) {
             $formFields['image'] = $request->file('slider_image')->hashName();
-        }
-
-        //File upload
-        if ($request->hasFile('slider_image')) {
             $request->file('slider_image')->store('/slider/', 'public');
         }
 
