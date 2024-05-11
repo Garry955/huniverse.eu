@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Product;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 
 class ProductController extends Controller
 {
@@ -68,6 +69,7 @@ class ProductController extends Controller
     {
         $formFields = $request->validate([
             'name' => 'required|min:6',
+            'image' => 'mimes:jpeg,png,jpg,gif',
             'description' => 'required|min:6',
             'price' => 'required|numeric',
             'stock' => 'required|numeric'
@@ -75,6 +77,14 @@ class ProductController extends Controller
         $formFields['price'] = $request->price;
         $formFields['link'] = $request->link;
 
+        //File upload
+        if ($request->hasFile('image')) {
+            $formFields['image'] = $request->file('image')->hashName();
+            $request->file('image')->store('/products/', 'public');
+            if (Storage::exists('public/products/' . $product->image)) {
+                Storage::delete('public/products/' . $product->image);
+            }
+        }
         $product->update($formFields);
 
         return redirect()->back()->with('message', 'Termék sikeresen módosítva');

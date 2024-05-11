@@ -82,12 +82,17 @@
                     <i class="fa-regular fa-newspaper"></i>
                     <span>Aloldalak</span>
                 </a>
+                <a href="{{ route('admin.slider') }}"
+                    class="px-4 py-3 flex items-center space-x-4 rounded-md text-gray-500 group">
+                    <i class="fa-regular fa-images"></i>
+                    <span>Diák</span>
+                </a>
             </div>
         </div>
     @endif
     <!-- Main content -->
     <div class="lg:flex gap-4 items-stretch" class="main">
-        <div class="lg:w-full h-screen lg:ml-64 px-6 py-8">
+        <div class="lg:w-full min-h-screen lg:ml-64 px-6 py-8">
             {{ $slot }}
         </div>
     </div>

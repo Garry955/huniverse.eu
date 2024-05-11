@@ -8,6 +8,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\OrderController;
 use App\Http\Controllers\ProductController;
+use App\Http\Controllers\SliderController;
 use App\Http\Controllers\UserController;
 use App\Models\Product;
 
@@ -89,3 +90,11 @@ Route::post('/admin/user/update/{user}', [AdminController::class, 'updateUser'])
 Route::get('/admin/user/create', [AdminController::class, 'createUser'])->name('admin.createUser')->middleware('isAdmin');
 Route::get('/admin/user/{user}', [AdminController::class, 'editUser'])->name('user.details')->middleware('isAdmin');
 Route::post('/admin/user/sore', [AdminController::class, 'storeUser'])->name('admin.storeUser')->middleware('isAdmin');
+
+//Admin slider routes
+Route::get('/admin/sliders', [SliderController::class, 'index'])->name('admin.slider')->middleware('isAdmin');
+Route::get('/admin/slider/create', [SliderController::class, 'create'])->name('slider.create')->middleware('isAdmin');
+Route::post('admin/slider/store', [SliderController::class, 'store'])->name('slider.store')->middleware('isAdmin');
+Route::get('admin/slider/edit/{slider}', [SliderController::class, 'edit'])->name('slider.edit')->middleware('isAdmin');
+Route::delete('admin/slider/delete/{slider}', [SliderController::class, 'destroy'])->name('slider.destroy')->middleware('isAdmin');
+Route::post('admin/slider/update/{slider}', [SliderController::class, 'update'])->name('slider.update')->middleware('isAdmin');

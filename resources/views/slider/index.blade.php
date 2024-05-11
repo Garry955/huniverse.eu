@@ -6,10 +6,10 @@
         <div class="p-3 w-full">
             <div class="head">
                 <div class="px-4 flex justify-between flex-row py-2 text-left border-b-2 w-full">
-                    <h2 class="text-2xl mb-2 font-bold text-gray-600">Termékek</h2>
-                    <a href="{{ route('product.create') }}" class="text-2xl mb-2 font-bold text-primary"><i
+                    <h2 class="text-2xl mb-2 font-bold text-gray-600">Slider diák</h2>
+                    <a href="{{ route('slider.create') }}" class="text-2xl mb-2 font-bold text-primary"><i
                             class="fa-regular fa-square-plus mr-2"></i>Új
-                        termék
+                        dia
                     </a>
                 </div>
             </div>
@@ -17,49 +17,43 @@
                 <thead class="bg-gray-200 border-b">
                     <tr>
                         <th scope="col" class="text-xl font-bold text-gray-900 px-6 py-4 text-left">
-                            #ID
+                            #
                         </th>
                         <th scope="col" class="text-xl font-bold text-gray-900 px-6 py-4 text-left">
                             Kép
                         </th>
                         <th scope="col" class="text-xl font-bold text-gray-900 px-6 py-4 text-left">
-                            Név
+                            Főcím
                         </th>
                         <th scope="col" class="text-xl font-bold text-gray-900 px-6 py-4 text-left">
-                            Ár(/db.)
+                            Szöveg
                         </th>
-                        <th scope="col" class="text-xl font-bold text-gray-900 px-6 py-4 text-left">
-                            Készlet
-                        </th>
-                        <th scope="col" class="text-xl text-center font-bold text-gray-900 px-6 py-4 text-left">
+                        <th scope="col" class="text-xl text-center font-bold text-gray-900 px-6 py-4">
                             Műveletek
                         </th>
                     </tr>
                 </thead>
                 <tbody>
                     <x-admin-list>
-                        @forelse ($products as $product)
+                        @forelse ($sliders as $slider)
                             <tr class="bg-white border-b transition duration-300 ease-in-out hover:bg-gray-100">
                                 <td class="px-6 py-4 whitespace-nowrap text-xl font-medium text-gray-900">
-                                    {{ $product->id }}</td>
+                                    {{ $slider->id }}</td>
                                 <td class="text-xl text-gray-900 font-light px-6 py-4 whitespace-nowrap">
-                                    <img src="{{ $product->image ? asset('/storage/products/' . $product->image) : asset('images/no-image.png') }}"
-                                        alt="product-image" class="w-[142px]" />
+                                    <img src="{{ $slider->image ? asset('/storage/slider/' . $slider->image) : asset('images/no-image.png') }}"
+                                        alt="slider-image" class="w-[142px]" />
 
                                 </td>
                                 <td class="text-xl text-gray-900 font-light px-6 py-4 whitespace-nowrap">
-                                    {{ $product->name }}
+                                    {{ $slider->lead }}
                                 </td>
                                 <td class="text-xl text-gray-900 font-light px-6 py-4 whitespace-nowrap">
-                                    {{ $product->price }} Ft
-                                </td>
-                                <td class="text-xl text-gray-900 font-light px-6 py-4 whitespace-nowrap">
-                                    {{ $product->stock }} db.
+                                    {{ $slider->text }} Ft
                                 </td>
                                 <td class="text-center text-2xl">
-                                    <a href="{{ route('product.edit', $product->id) }}" class="mr-8"><i
+                                    <a href="{{ route('slider.edit', $slider->id) }}" class="mr-8"><i
                                             class="fa-solid fa-pen-to-square text-primary"></i></a>
-                                    <form class="inline-block" action="{{ route('product.destroy', $product->id) }}"
+                                    <form class="inline-block" action="{{ route('slider.destroy', $slider->id) }}"
                                         method="POST">
                                         @csrf
                                         @method('DELETE')
@@ -68,7 +62,6 @@
                                     </form>
                                 </td>
                             </tr>
-
                         @empty
                         @endforelse
                     </x-admin-list>
