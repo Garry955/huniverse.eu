@@ -4,6 +4,7 @@ namespace Database\Seeders;
 
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 
+use App\Models\Landing;
 use App\Models\Product;
 use App\Models\User;
 use Illuminate\Database\Seeder;
@@ -52,6 +53,28 @@ class DatabaseSeeder extends Seeder
                 "phone" => "+32718812373",
                 "password" => bcrypt("password"),
                 "is_admin" => true,
+            ]
+        );
+
+        Landing::create(
+            [
+                "name" => "Kapcsolat",
+                "Lead" => "Kapcsolat",
+                "Content" => "Kapcsolati oldal szövege",
+            ]
+        );
+        Landing::create(
+            [
+                "name" => "Rólunk",
+                "Lead" => "Rólunk",
+                "Content" => "Rólunk oldal szövege",
+            ]
+        );
+        Landing::create(
+            [
+                "name" => "Sikeres rendelés",
+                "Lead" => "Sikeres rendelés",
+                "Content" => "Sikeres rendelés szöveg",
             ]
         );
     }

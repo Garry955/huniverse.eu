@@ -45,10 +45,11 @@
 
                                 </td>
                                 <td class="text-xl text-gray-900 font-light px-6 py-4 whitespace-nowrap">
-                                    {{ $slider->lead }}
+                                    <p class="whitespace-break-spaces">{{ $slider->lead }}</p>
                                 </td>
-                                <td class="text-xl text-gray-900 font-light px-6 py-4 whitespace-nowrap">
-                                    {{ $slider->text }} Ft
+                                <td
+                                    class="text-xl max-w-20 overflow-hidden text-gray-900 font-light px-6 py-4 whitespace-nowrap">
+                                    <p class="whitespace-break-spaces">{{ $slider->text }}</p>
                                 </td>
                                 <td class="text-center text-2xl">
                                     <a href="{{ route('slider.edit', $slider->id) }}" class="mr-8"><i

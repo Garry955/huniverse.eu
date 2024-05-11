@@ -6,6 +6,7 @@ use App\Http\Controllers\CartController;
 use App\Http\Controllers\ContactController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\LandingController;
 use App\Http\Controllers\OrderController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\SliderController;
@@ -24,6 +25,7 @@ use App\Models\Product;
 */
 
 Route::get('/', [HomeController::class, 'index'])->name('home');
+Route::get('/about-us', [HomeController::class, 'aboutUs'])->name('about-us');
 
 //Product routes
 Route::get('/products', [ProductController::class, 'index'])->name('product.index');
@@ -98,3 +100,8 @@ Route::post('admin/slider/store', [SliderController::class, 'store'])->name('sli
 Route::get('admin/slider/edit/{slider}', [SliderController::class, 'edit'])->name('slider.edit')->middleware('isAdmin');
 Route::delete('admin/slider/delete/{slider}', [SliderController::class, 'destroy'])->name('slider.destroy')->middleware('isAdmin');
 Route::post('admin/slider/update/{slider}', [SliderController::class, 'update'])->name('slider.update')->middleware('isAdmin');
+
+//Admin landing routes
+Route::get('/admin/landings', [LandingController::class, 'index'])->name('admin.landings')->middleware('isAdmin');
+Route::delete('/admin/landing/delete/{landing}', [LandingController::class, 'destroy'])->name('landing.destroy')->middleware('isAdmin');
+Route::get('/admin/landing/edit/{landing}', [LandingController::class, 'edit'])->name('landing.edit')->middleware('isAdmin');

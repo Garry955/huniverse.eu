@@ -21,7 +21,7 @@
         <div class="hidden lg:flex lg:gap-x-12">
             <a href="{{ route('product.index') }}" class="text-lg font-semibold leading-6 text-gray-900">Termékek</a>
             <a href="{{ route('contact') }}" class="text-lg font-semibold leading-6 text-gray-900">Kapcsolat</a>
-            <a href="#" class="text-lg font-semibold leading-6 text-gray-900">Rólunk</a>
+            <a href="{{ route('about-us') }}" class="text-lg font-semibold leading-6 text-gray-900">Rólunk</a>
         </div>
         <div class="hidden lg:flex lg:flex-1 lg:justify-end">
             <a href="{{ route('cart.show') }}"

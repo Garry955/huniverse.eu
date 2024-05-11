@@ -2,8 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Cart;
 use App\Models\Product;
+use App\Models\CartDetail;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\Storage;
 
 class ProductController extends Controller
@@ -54,9 +57,18 @@ class ProductController extends Controller
      */
     public function show(Product $product)
     {
+        $quantity = 1;
+        $customer_id = auth()->user() ? auth()->user()->id : Session::getId();
+        $cartID = Cart::where('customer_id', $customer_id)->first()?->id;
+        $cartItems = CartDetail::where(['cart_id' => $cartID, 'product_id' => $product->id])->with('product')->first();
+
+        if ($cartItems) {
+            $quantity = $cartItems->quantity;
+        }
 
         return view('products.show')->with([
-            'product' => $product
+            'product' => $product,
+            'quantity' => $quantity
         ]);
     }
 

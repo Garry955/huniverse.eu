@@ -1,7 +1,7 @@
 <x-layout>
     <section class="main container mx-auto">
 
-        @include('partials.hero')
+        @include('partials.slider')
 
         <div class="mb-20 relative">
             <h2 class="text-3xl font-bold mb-10">Termékek</h2>

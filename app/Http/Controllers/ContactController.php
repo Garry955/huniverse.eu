@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Contact;
+use App\Models\Landing;
 use Faker\Provider\Lorem;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Mail;
@@ -12,7 +13,7 @@ class ContactController extends Controller
     //
     public function index()
     {
-        return view('contact.index');
+        return view('contact.index', ['page' => Landing::where('name', 'Kapcsolat')->get()[0]]);
     }
 
     public function store(Request $request)
