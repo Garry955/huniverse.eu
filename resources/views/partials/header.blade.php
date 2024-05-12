@@ -1,5 +1,5 @@
-<header class="bg-white">
-    <nav class="mx-auto flex max-w-7xl items-center justify-between p-6 lg:px-8" aria-label="Global">
+<header class="bg-white fixed top-0 left-0 right-0 z-50">
+    <nav class="mx-auto flex max-w-7xl items-center justify-between px-6 lg:px-8" aria-label="Global">
         <div class="flex lg:flex-1">
             <a href="/" class="-m-1.5 p-1.5">
                 <span class="sr-only">Huniverse.eu</span>
@@ -19,23 +19,31 @@
             </button>
         </div>
         <div class="hidden lg:flex lg:gap-x-12">
-            <a href="{{ route('product.index') }}" class="text-lg font-semibold leading-6 text-gray-900">Termékek</a>
-            <a href="{{ route('contact') }}" class="text-lg font-semibold leading-6 text-gray-900">Kapcsolat</a>
-            <a href="{{ route('about-us') }}" class="text-lg font-semibold leading-6 text-gray-900">Rólunk</a>
+            <a href="{{ route('product.index') }}"
+                class="block py-6 px-3 text-lg font-semibold leading-6 text-gray-900 hover:text-primary {{ request()->is('product*') ? 'active' : '' }}">
+                Termékek</a>
+            <a href="{{ route('contact') }}"
+                class="block py-6 px-3 text-lg font-semibold leading-6 text-gray-900 hover:text-primary {{ request()->is('contact-us') ? 'active' : '' }}">Kapcsolat</a>
+            <a href="{{ route('about-us') }}"
+                class="block py-6 px-3  text-lg font-semibold leading-6 text-gray-900 hover:text-primary {{ request()->is('about-us') ? 'active' : '' }}">Rólunk</a>
         </div>
         <div class="hidden lg:flex lg:flex-1 lg:justify-end">
+            @include('partials._search')
             <a href="{{ route('cart.show') }}"
-                class="text-lg font-semibold leading-6 text-gray-900 mr-5 relative">Kosár<i
+                class="block py-6 px-3 text-xl font-semibold leading-6 text-gray-900   hover:text-primary {{ request()->is('cart*') ? 'active' : '' }} relative"><i
                     class="fa-solid fa-cart-shopping"></i> <b
-                    class="absolute top-[-10px] right-[-15px] text-center z-10 border-solid bg-black text-sm text-white rounded-full block px-2">{{ $cartTotal }}</b></a>
+                    class="absolute top-3 right-[-5px] text-center z-10 border-solid bg-black text-sm text-white rounded-full block px-2">{{ $cartTotal }}</b></a>
             @if (Auth::check())
-                <a href="{{ route('user.edit') }}" class="text-lg font-semibold leading-6 text-gray-900 mr-5">Profil <i
-                        class="fa-solid fa-user-large"></i><span aria-hidden="true"></span></a>
-                <a href="{{ route('logout') }}" class="text-lg font-semibold leading-6 text-gray-900">
-                    Kilépés<i class="fa-solid fa-right-from-bracket ml-1"></i> <span aria-hidden="true"></span></a>
+                <a href="{{ route('user.edit') }}"
+                    class="block py-6 px-3 text-xl font-semibold leading-6 text-gray-900  hover:text-primary {{ request()->is('user*') ? 'active' : '' }}">
+                    <i class="fa-solid fa-user-large"></i><span aria-hidden="true"></span></a>
+                <a href="{{ route('logout') }}"
+                    class="block py-6 px-3 text-2xl font-semibold leading-6 text-gray-900  hover:text-primary">
+                    <i class="fa-solid fa-right-from-bracket ml-1"></i> <span aria-hidden="true"></span></a>
             @else
-                <a href="{{ route('login') }}" class="text-lg font-semibold leading-6 text-gray-900"><i
-                        class="fa-solid fa-user-large mr-1"></i>Belépés <span aria-hidden="true"></span></a>
+                <a href="{{ route('login') }}"
+                    class="block py-6 px-3 text-xl font-semibold leading-6 text-gray-900  hover:text-primary"><i
+                        class="fa-solid fa-user-large mr-1"></i> <span aria-hidden="true"></span></a>
             @endif
         </div>
     </nav>

@@ -15,7 +15,7 @@
 
 </head>
 
-<body class="bg-blue-100 ">
+<body class="bg-blue-100 pt-[50px]">
     @if (session()->has('message'))
         <div x-data="{ show: true }" x-init="setTimeout(() => show = false, 3000)" x-show="show"
             class="fixed top-0 bg-primary-800 text-white px-48 py-5 text-center text-2xl left-0 right-0 z-10 shadow-md">

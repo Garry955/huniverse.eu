@@ -28,7 +28,7 @@
     @endif
     @if (Request::is('admin/*'))
         {{-- Header --}}
-        <header id="header">
+        <header id="header" class="fixed top-0 left-0 right-0 z-10">
             <nav class="bg-white border-b border-gray-300">
                 <div class="flex justify-between items-center px-9">
                     <!-- Menu icon -->
@@ -39,14 +39,15 @@
                     <div class="ml-1">
                         <a href="/admin/dashboard">
                             <img src="https://tailwindui.com/img/logos/mark.svg?color=indigo&shade=600" alt="logo"
-                                class="h-20 w-28">
+                                class="h-12 w-20">
                         </a>
                     </div>
 
                     <!-- Rigt-top icons -->
-                    <div class="space-x-4">
+                    <div class="space-x-4 text-xl p-3">
+                        <b class="text-primary">{{ auth()->user()->name }}</b>
                         <!-- Logout -->
-                        <a href="{{ route('admin.logout') }}">
+                        <a class="hover:text-primary font-bold" href="{{ route('admin.logout') }}">
                             <i class="fa-solid fa-right-from-bracket"></i>
                             Kijelentkezés
                         </a>
@@ -55,36 +56,36 @@
             </nav>
         </header>
         <!-- Sidebar -->
-        <div id="sidebar" class="lg:block hidden pt-5 bg-white w-64 h-screen fixed rounded-none border-none">
+        <div id="sidebar" class="lg:block hidden pt-20 z-0 bg-white w-64 h-screen fixed rounded-none border-none">
             <!-- Items -->
             <div class="p-4 space-y-4">
                 <a href="{{ route('admin.dashboard') }}"
-                    class="px-4 py-3 flex items-center space-x-4 rounded-md text-gray-500 group">
+                    class="px-4 py-3 flex items-center space-x-4 rounded-md text-gray-500 group hover:text-primary {{ request()->is('admin/dashboard') ? 'active' : '' }}">
                     <i class="fa-solid fa-store"></i>
                     <span>Termékek</span>
                 </a>
                 <a href="{{ route('admin.orders') }}"
-                    class="px-4 py-3 flex items-center space-x-4 rounded-md text-gray-500 group">
+                    class="px-4 py-3 flex items-center space-x-4 rounded-md text-gray-500 group hover:text-primary {{ request()->is('admin/order*') ? 'active' : '' }}">
                     <i class="fa-solid fa-cart-shopping"></i>
                     <span>Rendelések</span>
                 </a>
                 <a href="{{ route('admin.users') }}"
-                    class="px-4 py-3 flex items-center space-x-4 rounded-md text-gray-500 group">
+                    class="px-4 py-3 flex items-center space-x-4 rounded-md text-gray-500 group hover:text-primary {{ request()->is('admin/user*') ? 'active' : '' }}">
                     <i class="fa-solid fa-users"></i>
                     <span>Felhasználók</span>
                 </a>
                 <a href="{{ route('admin.contacts') }}"
-                    class="px-4 py-3 flex items-center space-x-4 rounded-md text-gray-500 group">
+                    class="px-4 py-3 flex items-center space-x-4 rounded-md text-gray-500 group hover:text-primary {{ request()->is('admin/contact*') ? 'active' : '' }}">
                     <i class="fa-regular fa-envelope"></i>
                     <span>Üzenetek</span>
                 </a>
                 <a href="{{ route('admin.landings') }}"
-                    class="px-4 py-3 flex items-center space-x-4 rounded-md text-gray-500 group">
+                    class="px-4 py-3 flex items-center space-x-4 rounded-md text-gray-500 group hover:text-primary {{ request()->is('admin/landing*') ? 'active' : '' }}">
                     <i class="fa-regular fa-newspaper"></i>
                     <span>Aloldalak</span>
                 </a>
                 <a href="{{ route('admin.slider') }}"
-                    class="px-4 py-3 flex items-center space-x-4 rounded-md text-gray-500 group">
+                    class="px-4 py-3 flex items-center space-x-4 rounded-md text-gray-500 group hover:text-primary {{ request()->is('admin/slider*') ? 'active' : '' }}">
                     <i class="fa-regular fa-images"></i>
                     <span>Diák</span>
                 </a>
@@ -93,7 +94,7 @@
     @endif
     <!-- Main content -->
     <div class="lg:flex gap-4 items-stretch" class="main">
-        <div class="lg:w-full min-h-screen lg:ml-64 px-6 py-8">
+        <div class="lg:w-full min-h-screen lg:ml-64 px-6 py-8 mt-[40px]">
             {{ $slot }}
         </div>
     </div>

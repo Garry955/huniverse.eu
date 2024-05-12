@@ -19,14 +19,9 @@ p {
     @apply leading-[1.6];
 }
 
-.scrolled .main {
-    margin-top: 40px;
-}
-
-.scrolled header {
-    position: fixed;
-    top: 0;
-    left: 0;
-    right: 0;
-    z-index: 10;
+a.active {
+    color: rgb(59 113 202);
+    -webkit-box-shadow: inset 0px 0px 25px 1px rgba(59, 113, 202, 0.47);
+    -moz-box-shadow: inset 0px 0px 25px 1px rgba(59, 113, 202, 0.47);
+    box-shadow: inset 0px 0px 25px 1px rgba(59, 113, 202, 0.47);
 }

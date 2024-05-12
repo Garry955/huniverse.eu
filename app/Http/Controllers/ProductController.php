@@ -16,7 +16,15 @@ class ProductController extends Controller
      */
     public function index()
     {
-        return view('products.index', ['products' => Product::latest()->paginate(9)]);
+        if (request()->query()["search"]) {
+            $products = Product::latest()
+                ->where('name', 'like', '%' . request()->query()["search"] . '%')
+                ->orWhere('description', 'like', '%' . request()->query()["search"] . '%')->paginate(9);
+        } else {
+            $products = Product::latest()->paginate(9);
+        }
+
+        return view('products.index', ['products' => $products]);
     }
 
     /**
