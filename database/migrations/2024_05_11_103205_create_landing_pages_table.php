@@ -15,7 +15,8 @@ return new class extends Migration
             $table->id();
             $table->string('name');
             $table->string('lead');
-            $table->text('content');
+            $table->text('content')->nullable();
+            $table->string('place')->nullable();
             $table->timestamps();
         });
     }

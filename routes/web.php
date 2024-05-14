@@ -109,7 +109,9 @@ Route::get('/admin/landings', [LandingController::class, 'index'])->name('admin.
 Route::delete('/admin/landing/delete/{landing}', [LandingController::class, 'destroy'])->name('landing.destroy')->middleware('isAdmin');
 Route::get('/admin/landing/edit/{landing}', [LandingController::class, 'edit'])->name('landing.edit')->middleware('isAdmin');
 Route::post('/admin/landing/update/{landing}', [LandingController::class, 'update'])->name('landing.update')->middleware('isAdmin');
+Route::get('/admin/landing/create', [LandingController::class, 'create'])->name('landing.create')->middleware('isAdmin');
+Route::post('/admin/landing/store', [LandingController::class, 'store'])->name('landing.store')->middleware('isAdmin');
 
-//Admin group routes
+//Admin product_group routes
 Route::delete('/admin/group/delete/{group}', [GroupController::class, 'destroy'])->name('group.destroy')->middleware('isAdmin');
 Route::post('/admin/group/store', [GroupController::class, 'store'])->name('group.store')->middleware('isAdmin');

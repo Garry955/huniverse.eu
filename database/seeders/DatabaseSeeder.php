@@ -66,37 +66,41 @@ class DatabaseSeeder extends Seeder
 
         Landing::create(
             [
-                "name" => "Kapcsolat",
+                "name" => "kapcsolat",
                 "Lead" => "Kapcsolat",
-                "Content" => "Kapcsolati oldal szövege",
+                "content" => "Kapcsolati oldal szövege",
+                "place" => "both"
             ]
         );
         Landing::create(
             [
-                "name" => "Rólunk",
+                "name" => "rolunk",
                 "Lead" => "Rólunk",
-                "Content" => "Rólunk oldal szövege",
+                "content" => "Rólunk oldal szövege",
+                "place" => "both"
             ]
         );
         Landing::create(
             [
-                "name" => "Sikeres rendelés",
+                "name" => "order-success",
                 "Lead" => "Sikeres rendelés",
-                "Content" => "Sikeres rendelés szöveg",
+                "content" => "Sikeres rendelés szöveg",
             ]
         );
         Landing::create(
             [
-                "name" => "ÁSZF",
+                "name" => "aszf",
                 "Lead" => "Általános szerződési feltételek",
-                "Content" => "ÁSZF szöveg",
+                "content" => "ÁSZF szöveg",
+                "place" => "footer"
             ]
         );
         Landing::create(
             [
-                "name" => "GDPR",
+                "name" => "gdpr",
                 "Lead" => "GDPR",
-                "Content" => "GDPR szöveg",
+                "content" => "GDPR szöveg",
+                "place" => "footer"
             ]
         );
     }
