@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Cart;
 use App\Models\Product;
 use App\Models\CartDetail;
+use App\Models\Group;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\Storage;
@@ -16,15 +17,23 @@ class ProductController extends Controller
      */
     public function index()
     {
-        if (request()->query()["search"]) {
-            $products = Product::latest()
-                ->where('name', 'like', '%' . request()->query()["search"] . '%')
-                ->orWhere('description', 'like', '%' . request()->query()["search"] . '%')->paginate(9);
+        $groups = Group::latest()->get();
+
+        if (request()->query()) {
+            $group = Group::latest()?->where('name', 'like', '%' . request()->query()["search"] . '%')->first();
+            if ($group) {
+                $products = Product::latest()->with('group')
+                    ->where('group_id', $group->id)->paginate(9);
+            } else {
+                $products = Product::latest()->with('group')
+                    ->where('name', 'like', '%' . request()->query()["search"] . '%')
+                    ->orWhere('description', 'like', '%' . request()->query()["search"] . '%')->paginate(9);
+            }
         } else {
             $products = Product::latest()->paginate(9);
         }
 
-        return view('products.index', ['products' => $products]);
+        return view('products.index', ['products' => $products, 'groups' => $groups]);
     }
 
     /**
@@ -32,8 +41,8 @@ class ProductController extends Controller
      */
     public function create()
     {
-        //
-        return view('products.create');
+        $groups = Group::latest()->get();
+        return view('products.create', ['groups' => $groups]);
     }
 
     /**
@@ -48,6 +57,9 @@ class ProductController extends Controller
             'stock' => 'required|numeric',
         ]);
         $formFields['link'] = $request->link;
+        if ($request->product_group) {
+            $formFields['group_id'] = $request->product_group;
+        }
 
         //File upload
         if ($request->hasFile('image')) {
@@ -85,7 +97,9 @@ class ProductController extends Controller
      */
     public function edit(Product $product)
     {
-        return view('products.edit', ['product' => $product]);
+        $groups = Group::latest()->get();
+        $product = Product::where('id', $product->id)->with('group')->first();
+        return view('products.edit', ['product' => $product, 'groups' => $groups]);
     }
 
     /**
@@ -102,6 +116,11 @@ class ProductController extends Controller
         ]);
         $formFields['price'] = $request->price;
         $formFields['link'] = $request->link;
+        if ($request->product_group != '') {
+            $formFields['group_id'] = $request->product_group;
+        } else {
+            $formFields['group_id'] = NULL;
+        }
 
         //File upload
         if ($request->hasFile('image')) {

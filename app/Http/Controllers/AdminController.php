@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Group;
 use App\Models\User;
 use App\Models\Product;
 use App\Models\Slider;
@@ -35,9 +36,10 @@ class AdminController extends Controller
 
     public function dashboard()
     {
-        $products = Product::latest()->paginate(10);
+        $products = Product::latest()->with('group')->paginate(10);
+        $groups = Group::latest()->get();
 
-        return view('admin.dashboard', ['products' => $products]);
+        return view('admin.dashboard', ['products' => $products, 'groups' => $groups]);
     }
 
     public function logout(Request $request)

@@ -5,7 +5,6 @@ namespace App\Http\Controllers;
 use App\Models\Landing;
 use App\Models\Product;
 use App\Models\Slider;
-use Illuminate\Http\Request;
 
 class HomeController extends Controller
 {

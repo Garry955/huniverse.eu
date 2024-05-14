@@ -4,6 +4,7 @@ use App\Http\Controllers\AdminController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\CartController;
 use App\Http\Controllers\ContactController;
+use App\Http\Controllers\GroupController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\LandingController;
@@ -105,3 +106,7 @@ Route::post('admin/slider/update/{slider}', [SliderController::class, 'update'])
 Route::get('/admin/landings', [LandingController::class, 'index'])->name('admin.landings')->middleware('isAdmin');
 Route::delete('/admin/landing/delete/{landing}', [LandingController::class, 'destroy'])->name('landing.destroy')->middleware('isAdmin');
 Route::get('/admin/landing/edit/{landing}', [LandingController::class, 'edit'])->name('landing.edit')->middleware('isAdmin');
+
+//Admin group routes
+Route::delete('/admin/group/delete/{group}', [GroupController::class, 'destroy'])->name('group.destroy')->middleware('isAdmin');
+Route::post('/admin/group/store', [GroupController::class, 'store'])->name('group.store')->middleware('isAdmin');

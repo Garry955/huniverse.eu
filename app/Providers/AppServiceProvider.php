@@ -3,6 +3,7 @@
 namespace App\Providers;
 
 use App\Models\Cart;
+use App\Models\Group;
 use Illuminate\Support\ServiceProvider;
 
 class AppServiceProvider extends ServiceProvider
@@ -22,7 +23,8 @@ class AppServiceProvider extends ServiceProvider
     {
         view()->composer('partials.header', function ($view) {
             $cartTotal = Cart::getTotal();
-            $view->with('cartTotal', $cartTotal);
+            $groups = Group::latest()->get();
+            $view->with(['cartTotal' => $cartTotal, 'groups' => $groups]);
         });
     }
 }

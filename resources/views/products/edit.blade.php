@@ -25,7 +25,7 @@
                     class="w-3/5 ml-20 relative order-first md:order-last md:h-auto flex justify-center items-center border border-dashed border-gray-400 col-span-2 m-2 rounded-lg bg-no-repeat bg-center bg-origin-padding bg-cover">
                     <span class="text-gray-400 w-full overflow-hidden m-0 pt-[56.25%] relative">
                         <img id="preview"
-                            src="{{ $product->image ? asset('/storage/products/' . $product->image) : '#' }}"
+                            src="{{ $product->image ? asset('/storage/products/' . $product->image) : asset('/images/no-image.png') }}"
                             alt="image" class="absolute top-1/2 left-1/2 translate-x-[-50%] translate-y-[-50%]"
                             style="{{ !$product->image ?? 'display:none;' }}" />
 
@@ -91,7 +91,7 @@
 
             <!-- stock input -->
             <div class="relative mb-6" data-twe-input-wrapper-init>
-                <input type="text" value="{{ $product->stock ? $product->stock : old('stock') }}"
+                <input type="number" value="{{ $product->stock ? $product->stock : old('stock') }}"
                     style="background-color: light-dark(rgb(232, 240, 254), rgba(70, 90, 126, 0.4)) !important;"
                     class="peer block min-h-[auto] w-full rounded border-0 bg-transparent px-3 py-[0.32rem] leading-[2.15] outline-none transition-all duration-200 ease-linear focus:placeholder:opacity-100 peer-focus:text-primary data-[twe-input-state-active]:placeholder:opacity-100 motion-reduce:transition-none dark:text-white dark:placeholder:text-neutral-300 dark:autofill:shadow-autofill dark:peer-focus:text-primary [&:not([data-twe-input-placeholder-active])]:placeholder:opacity-0"
                     id="stock" placeholder="Készlet" name="stock" />
@@ -118,6 +118,23 @@
                     class="pointer-events-none absolute left-3 top-0 mb-0 max-w-[90%] origin-[0_0] truncate pt-[0.37rem] leading-[2.15] text-neutral-500 transition-all duration-200 ease-out -translate-y-[1.15rem] peer-focus:scale-[0.8] peer-focus:text-primary peer-data-[twe-input-state-active]:-translate-y-[1.15rem] peer-data-[twe-input-state-active]:scale-[0.8] motion-reduce:transition-none dark:text-neutral-400 dark:peer-focus:text-primary">
                     Külső hivatkozás
                 </label>
+            </div>
+            {{-- select --}}
+            <div class="relative mb-6" data-twe-input-wrapper-init>
+                <label for="link" class="font-bold">
+                    Termékcsoport
+                </label>
+                <select id="countries" name="product_group"
+                    style="background-color: light-dark(rgb(232, 240, 254), rgba(70, 90, 126, 0.4)) !important;"
+                    class="mt-3 bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+                    <option value=''>Termékcsalád</option>
+                    @forelse ($groups as $group)
+                        <option value="{{ $group->id }}"
+                            @if ($product->group) {{ $product->group->id == $group->id ? 'selected' : '' }} @endif>
+                            {{ $group->name }}</option>
+                    @empty
+                    @endforelse
+                </select>
             </div>
             <!-- Register button -->
             <div class="text-center lg:text-left">

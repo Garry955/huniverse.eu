@@ -1,8 +1,9 @@
 <?php
 
-use Illuminate\Database\Migrations\Migration;
-use Illuminate\Database\Schema\Blueprint;
+use App\Models\Group;
 use Illuminate\Support\Facades\Schema;
+use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Database\Migrations\Migration;
 
 return new class extends Migration
 {
@@ -19,6 +20,10 @@ return new class extends Migration
             $table->string('link')->default('')->nullable;
             $table->integer('price');
             $table->integer('stock')->nullable;
+            $table->foreignId('group_id')
+                ->nullable()
+                ->constrained('product_groups')
+                ->onDelete('set null');;
             $table->timestamps();
         });
     }

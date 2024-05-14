@@ -1,5 +1,5 @@
 <x-admin-layout>
-    <div class="mb-12 md:mb-0 lg:w-3/4">
+    <div class="mb-12 md:mb-20 lg:w-3/4">
         <form action="{{ route('product.store') }}" method="POST" enctype="multipart/form-data">
             @csrf
             <!-- Separator between social media sign in and email/password sign in -->
@@ -117,6 +117,21 @@
                     class="pointer-events-none absolute left-3 top-0 mb-0 max-w-[90%] origin-[0_0] truncate pt-[0.37rem] leading-[2.15] text-neutral-500 transition-all duration-200 ease-out -translate-y-[1.15rem] peer-focus:scale-[0.8] peer-focus:text-primary peer-data-[twe-input-state-active]:-translate-y-[1.15rem] peer-data-[twe-input-state-active]:scale-[0.8] motion-reduce:transition-none dark:text-neutral-400 dark:peer-focus:text-primary">
                     Külső hivatkozás
                 </label>
+            </div>
+            {{-- select --}}
+            <div class="relative mb-6" data-twe-input-wrapper-init>
+                <label for="link" class="font-bold">
+                    Termékcsoport
+                </label>
+                <select id="countries" name="product_group"
+                    style="background-color: light-dark(rgb(232, 240, 254), rgba(70, 90, 126, 0.4)) !important;"
+                    class="mt-3 bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+                    <option value='' selected>Termékcsalád</option>
+                    @forelse ($groups as $group)
+                        <option value="{{ $group->id }}">{{ $group->name }}</option>
+                    @empty
+                    @endforelse
+                </select>
             </div>
             <!-- Register button -->
             <div class="text-center lg:text-left">

@@ -9,5 +9,10 @@ class Product extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['name', 'description', 'image', 'link', 'price', 'stock'];
+    protected $fillable = ['name', 'description', 'image', 'link', 'price', 'stock', 'group_id'];
+
+    public function group()
+    {
+        return $this->belongsTo(Group::class, 'group_id');
+    }
 }

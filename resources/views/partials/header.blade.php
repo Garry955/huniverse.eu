@@ -1,4 +1,4 @@
-<header class="bg-white fixed top-0 left-0 right-0 z-50">
+<header class="bg-white fixed top-0 left-0 right-0 z-40">
     <nav class="mx-auto flex max-w-7xl items-center justify-between px-6 lg:px-8" aria-label="Global">
         <div class="flex lg:flex-1">
             <a href="/" class="-m-1.5 p-1.5">
@@ -20,8 +20,17 @@
         </div>
         <div class="hidden lg:flex lg:gap-x-12">
             <a href="{{ route('product.index') }}"
-                class="block py-6 px-3 text-lg font-semibold leading-6 text-gray-900 hover:text-primary {{ request()->is('product*') ? 'active' : '' }}">
+                class="dropdown block py-6 px-3 text-lg font-semibold leading-6 text-gray-900 hover:text-primary {{ request()->is('product*') ? 'active' : '' }}">
                 Termékek</a>
+            @if ($groups)
+                <div class="dropdown-menu w-fit bg-white lg:rounded-lg absolute top-[72px] pb-3 hidden">
+                    @forelse ($groups as $group)
+                        <a class="block py-3 font-bold pl-5 pr-16 hover:bg-primary-100"
+                            href="/products/?search={{ $group->name }}">{{ $group->name }}</a>
+                    @empty
+                    @endforelse
+                </div>
+            @endif
             <a href="{{ route('contact') }}"
                 class="block py-6 px-3 text-lg font-semibold leading-6 text-gray-900 hover:text-primary {{ request()->is('contact-us') ? 'active' : '' }}">Kapcsolat</a>
             <a href="{{ route('about-us') }}"
@@ -42,7 +51,7 @@
                     <i class="fa-solid fa-right-from-bracket ml-1"></i> <span aria-hidden="true"></span></a>
             @else
                 <a href="{{ route('login') }}"
-                    class="block py-6 px-3 text-xl font-semibold leading-6 text-gray-900  hover:text-primary"><i
+                    class="block py-6 px-3 text-xl font-semibold leading-6 text-gray-900  hover:text-primary {{ request()->is('login') ? 'active' : '' }}"><i
                         class="fa-solid fa-user-large mr-1"></i> <span aria-hidden="true"></span></a>
             @endif
         </div>

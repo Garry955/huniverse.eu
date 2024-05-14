@@ -4,6 +4,7 @@ namespace Database\Seeders;
 
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 
+use App\Models\Group;
 use App\Models\Landing;
 use App\Models\Product;
 use App\Models\User;
@@ -23,6 +24,12 @@ class DatabaseSeeder extends Seeder
         //     'email' => 'test@example.com',
         // ]);
         for ($i = 0; $i < 10; $i++) {
+
+            Group::create([
+                "name" => "group-" . $i,
+                "link" => "grouplink-" . $i
+            ]);
+
             Product::create(
                 [
                     "name" => "Product-" . $i,
@@ -30,7 +37,8 @@ class DatabaseSeeder extends Seeder
                     "image" => "",
                     "link" => "#",
                     "price" => $i * 1000,
-                    "stock" => $i
+                    "stock" => $i,
+                    "group_id" => $i + 1
 
                 ]
             );

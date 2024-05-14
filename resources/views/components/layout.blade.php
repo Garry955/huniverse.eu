@@ -11,6 +11,7 @@
     @vite('resources/css/app.css')
     @vite('resources/js/app.js')
     <script src="https://cdn.jsdelivr.net/npm/tw-elements/dist/js/index.min.js"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.13.10/dist/cdn.min.js"></script>
     <title>Huniverse.eu</title>
 
 </head>
@@ -18,7 +19,7 @@
 <body class="bg-blue-100 pt-[50px]">
     @if (session()->has('message'))
         <div x-data="{ show: true }" x-init="setTimeout(() => show = false, 3000)" x-show="show"
-            class="fixed top-0 bg-primary-800 text-white px-48 py-5 text-center text-2xl left-0 right-0 z-10 shadow-md">
+            class="fixed z-50 top-0 opacity-95 bg-primary-800 text-white px-48 py-5 text-center text-2xl left-0 right-0 shadow-md">
             <p>
                 {{ session('message') }}
             </p>

@@ -25,3 +25,8 @@ a.active {
     -moz-box-shadow: inset 0px 0px 25px 1px rgba(59, 113, 202, 0.47);
     box-shadow: inset 0px 0px 25px 1px rgba(59, 113, 202, 0.47);
 }
+
+a.dropdown:hover + .dropdown-menu,
+.dropdown-menu:hover {
+    display: block;
+}
