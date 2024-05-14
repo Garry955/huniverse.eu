@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Cart;
 use App\Models\Order;
 use App\Models\CartDetail;
+use App\Models\Landing;
 use App\Models\Product;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -68,7 +69,9 @@ class OrderController extends Controller
 
     public function success()
     {
-        return view('order.success');
+        $message = Landing::where('name', 'Sikeres rendelés')->first();
+
+        return view('order.success', ['content' => $message]);
     }
 
     public function list()

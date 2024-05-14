@@ -64,10 +64,10 @@
             </div>
             @forelse($groups as $group)
                 <div class="inline-block px-5 mb-3 py-3 mr-5 rounded-lg bg-blue-200">
-                    <span class="font-bold">
+                    <a href="/admin/dashboard?search={{ $group->name }}" class="font-bold">
                         {{ $group->name ?? '' }}
 
-                    </span>
+                    </a>
                     <form class="inline-block" action="{{ route('group.destroy', $group->id ?? '') }}" method="POST">
                         @csrf
                         @method('DELETE')
@@ -84,7 +84,8 @@
         <div class="p-3 w-full">
             <div class="head">
                 <div class="px-4 flex justify-between flex-row py-2 text-left border-b-2 w-full">
-                    <h2 class="text-2xl mb-2 font-bold text-gray-600">Termékek</h2>
+                    <h2 class="text-2xl mb-2 font-bold text-gray-600">Termékek
+                        {{ request()->query() ? '- ' . request()->query()['search'] : '' }}</h2>
                     <a href="{{ route('product.create') }}" class="text-2xl mb-2 font-bold text-primary"><i
                             class="fa-regular fa-square-plus mr-2"></i>Új
                         termék

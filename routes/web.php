@@ -27,6 +27,8 @@ use App\Models\Product;
 
 Route::get('/', [HomeController::class, 'index'])->name('home');
 Route::get('/about-us', [HomeController::class, 'aboutUs'])->name('about-us');
+Route::get('/aszf', [HomeController::class, 'aszf'])->name('aszf');
+Route::get('/gdpr', [HomeController::class, 'gdpr'])->name('gdpr');
 
 //Product routes
 Route::get('/products', [ProductController::class, 'index'])->name('product.index');
@@ -106,6 +108,7 @@ Route::post('admin/slider/update/{slider}', [SliderController::class, 'update'])
 Route::get('/admin/landings', [LandingController::class, 'index'])->name('admin.landings')->middleware('isAdmin');
 Route::delete('/admin/landing/delete/{landing}', [LandingController::class, 'destroy'])->name('landing.destroy')->middleware('isAdmin');
 Route::get('/admin/landing/edit/{landing}', [LandingController::class, 'edit'])->name('landing.edit')->middleware('isAdmin');
+Route::post('/admin/landing/update/{landing}', [LandingController::class, 'update'])->name('landing.update')->middleware('isAdmin');
 
 //Admin group routes
 Route::delete('/admin/group/delete/{group}', [GroupController::class, 'destroy'])->name('group.destroy')->middleware('isAdmin');

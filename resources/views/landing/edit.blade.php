@@ -1,6 +1,6 @@
 <x-admin-layout>
     <div class="mb-12 md:mb-0 lg:w-3/4">
-        <form action="{{ route('product.update', $landing->id) }}" method="POST" enctype="multipart/form-data">
+        <form action="{{ route('landing.update', $landing->id) }}" method="POST" enctype="multipart/form-data">
             @csrf
             <!-- Separator between social media sign in and email/password sign in -->
             <div
@@ -28,7 +28,14 @@
                 </div>
             </div>
 
-            <textarea id="tinymce">{{ $landing->content }}</textarea>
+            <textarea id="tinymce" class="mb-10" name="content">{{ $landing->content }}</textarea>
+            <div class="relative mb-6" data-twe-input-wrapper-init>
+                <div class="error text-red-500">
+                    @error('content')
+                        {{ $message }}
+                    @enderror
+                </div>
+            </div>
 
             <!-- Register button -->
             <div class="text-center lg:text-left">

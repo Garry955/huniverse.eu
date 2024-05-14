@@ -85,5 +85,19 @@ class DatabaseSeeder extends Seeder
                 "Content" => "Sikeres rendelés szöveg",
             ]
         );
+        Landing::create(
+            [
+                "name" => "ÁSZF",
+                "Lead" => "Általános szerződési feltételek",
+                "Content" => "ÁSZF szöveg",
+            ]
+        );
+        Landing::create(
+            [
+                "name" => "GDPR",
+                "Lead" => "GDPR",
+                "Content" => "GDPR szöveg",
+            ]
+        );
     }
 }

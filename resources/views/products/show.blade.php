@@ -15,7 +15,7 @@
                         </h2>
                         <p class="mb-6 text-neutral-500 dark:text-neutral-300">
                             <b>Termékcsoport: </b><a class="font-bold text-primary"
-                                href="{{ $product->group->link }}">{{ $product->group->name }}</a>
+                                href="{{ $product->group ? $product->group->link : '' }}">{{ $product->group ? $product->group->name : '' }}</a>
                             </br>
                         </p>
                         <p class="mb-6 text-neutral-500 dark:text-neutral-300">

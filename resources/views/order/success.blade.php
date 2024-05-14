@@ -17,21 +17,7 @@
         <div class="mx-auto justify-center px-6 md:flex md:space-x-6 xl:px-0">
             <div class="rounded-lg w-full">
                 <p>
-                    Lorem, ipsum dolor sit amet consectetur adipisicing elit. Consequuntur libero, blanditiis nobis ex
-                    maxime quidem accusamus, ad nulla eius laudantium nesciunt commodi fuga. Vitae nam cum placeat
-                    commodi saepe neque.
-                    Lorem, ipsum dolor sit amet consectetur adipisicing elit. Consequuntur libero, blanditiis nobis ex
-                    maxime quidem accusamus, ad nulla eius laudantium nesciunt commodi fuga. Vitae nam cum placeat
-                    commodi saepe neque.
-                    Lorem, ipsum dolor sit amet consectetur adipisicing elit. Consequuntur libero, blanditiis nobis ex
-                    maxime quidem accusamus, ad nulla eius laudantium nesciunt commodi fuga. Vitae nam cum placeat
-                    commodi saepe neque.
-                    Lorem, ipsum dolor sit amet consectetur adipisicing elit. Consequuntur libero, blanditiis nobis ex
-                    maxime quidem accusamus, ad nulla eius laudantium nesciunt commodi fuga. Vitae nam cum placeat
-                    commodi saepe neque.
-                    Lorem, ipsum dolor sit amet consectetur adipisicing elit. Consequuntur libero, blanditiis nobis ex
-                    maxime quidem accusamus, ad nulla eius laudantium nesciunt commodi fuga. Vitae nam cum placeat
-                    commodi saepe neque.
+                    {{ $content->content }}
                 </p>
                 <a href="/" class="text-2xl text-primary mb-32 mt-20 block font-bold">Vissza
                     a

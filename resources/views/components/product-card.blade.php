@@ -21,7 +21,8 @@
 
                     <p>Termékcsoport: <b>{{ $product->group ? $product->group->name : '' }}</b></p>
                 </span>
-                <span class="text-right block font-bold">
+                <span class="
+             block font-bold">
                     @if ($product->stock)
                         <i class="fa-regular fa-circle-check text-green-500 text-xl"></i>
                         <b class="mr-2 text-green-500">Készleten(/db.) {{ $product->stock }} darab</b>

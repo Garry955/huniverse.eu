@@ -36,7 +36,17 @@ class AdminController extends Controller
 
     public function dashboard()
     {
-        $products = Product::latest()->with('group')->paginate(10);
+        if (request()->query()) {
+            $group = Group::latest()?->where('name', 'like', '%' . request()->query()["search"] . '%')->first();
+            if ($group) {
+                $products = Product::latest()->with('group')
+                    ->where('group_id', $group->id)->paginate(9);
+            } else {
+                $products = Product::latest()->with('group')->paginate(10);
+            }
+        } else {
+            $products = Product::latest()->with('group')->paginate(10);
+        }
         $groups = Group::latest()->get();
 
         return view('admin.dashboard', ['products' => $products, 'groups' => $groups]);

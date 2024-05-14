@@ -134,7 +134,7 @@
                 <div class="rounded-lg mb-10">
                     @forelse ($cartItems as $item)
                         <div class="justify-between bg-white p-6 border-b-2 border-solid sm:flex sm:justify-start">
-                            <img src="{{ $item->product->image ? asset($item->product->image) : asset('images/no-image.png') }}"
+                            <img src="{{ $item->product->image ? asset('/storage/products/' . $item->product->image) : asset('images/no-image.png') }}"
                                 alt="product-image" class="rounded-lg h-[115px] w-auto" />
                             <div class="sm:ml-4 sm:flex sm:w-full sm:justify-between">
                                 <div class="mt-5 sm:mt-0">

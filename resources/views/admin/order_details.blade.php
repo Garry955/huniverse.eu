@@ -14,12 +14,14 @@
         <p class="text-xl mb-3">Megendelő neve: <b>{{ $order->customer_name }}</b></p>
         <p class="text-xl mb-3">Megendelő email-címe: <b>{{ $order->customer_email }}</b></p>
         <p class="text-xl mb-3">Megjegyzés: <b>{{ $order->customer_comment }}</b></p>
-        <p class="text-xl mb-5">Rendelt termékek:</p>
+        <p class="text-xl mb-3">Telefonszám: <b>{{ $order->customer_phone }}</b></p>
+        <p class="text-xl mb-3">Cím: <b>{{ $order->customer_address }}</b></p>
+        <p class="text-xl mb-5 font-bold">Rendelt termékek:</p>
         <div class="mx-auto justify-center px-6 md:flex md:space-x-6 xl:px-0">
             <div class="rounded-lg w-full">
                 @foreach ($orderItems as $item)
                     <div class="justify-between bg-white p-6 shadow-md sm:flex sm:justify-start">
-                        <img src="{{ $item->product->image ? asset($item->product->image) : asset('images/no-image.png') }}"
+                        <img src="{{ $item->product->image ? asset('/storage/products/' . $item->product->image) : asset('images/no-image.png') }}"
                             alt="product-image" class="w-full rounded-lg sm:w-40" />
                         <div class="sm:ml-4 sm:flex sm:w-full sm:justify-between">
                             <div class="mt-5 sm:mt-0">

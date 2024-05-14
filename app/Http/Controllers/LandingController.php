@@ -16,4 +16,16 @@ class LandingController extends Controller
     {
         return view('landing.edit', ['landing' => $landing]);
     }
+
+    public function update(Landing $landing, Request $request)
+    {
+        $formFields = $request->validate([
+            'lead' => 'required|min:4|max:255',
+            'content' => 'required'
+        ]);
+
+        $landing->update($formFields);
+
+        return redirect()->back()->with('message', 'Aloldal sikeresen módosítva.');
+    }
 }

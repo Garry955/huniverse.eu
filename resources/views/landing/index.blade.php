@@ -35,17 +35,8 @@
                                 </td>
                                 <td class="text-center text-2xl"><a href="{{ route('landing.edit', $landing->id) }}"
                                         class="mr-8"><i class="fa-solid fa-pen-to-square text-primary"></i></a>
-
-                                    <form class="inline-block" action="{{ route('landing.destroy', $landing->id) }}"
-                                        method="POST">
-                                        @csrf
-                                        @method('DELETE')
-                                        <button type="submit"><i
-                                                class="fa-solid fa-trash-can text-red-500"></i></button>
-                                    </form>
                                 </td>
                             </tr>
-
                         @empty
                         @endforelse
                     </x-admin-list>

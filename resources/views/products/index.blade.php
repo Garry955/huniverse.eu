@@ -4,7 +4,9 @@
             <div class="p-3 w-full">
                 <div class="head">
                     <div class="px-4 flex justify-between flex-row mb-5 py-2 text-left border-b-2 w-full">
-                        <h2 class="text-2xl mb-2 font-bold text-gray-600">Termékcsoportok</h2>
+                        <h2 class="text-2xl mb-2 font-bold text-gray-600">Termékcsoportok</h2><a
+                            href={{ route('product.index') }} class=" font-bold text-blue-600">Összes
+                            termék <i class="fa-solid fa-right-from-bracket"></i></a>
                     </div>
                 </div>
                 <div class="">
@@ -26,6 +28,7 @@
         @else
             <h2 class="text-3xl font-bold mb-10">Összes termék</h2>
         @endif
+
         <div class="grid-cols-1 sm:grid md:grid-cols-3 ">
             @forelse ($products as $product)
                 <x-product-card :product='$product' />

@@ -26,7 +26,7 @@
         </div>
     @endif
     @include('partials.header')
-    <main class="">
+    <main class="mb-40">
         {{ $slot }}
     </main>
     @include('partials.footer')
