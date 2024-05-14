@@ -17,6 +17,7 @@ return new class extends Migration
             $table->string('lead');
             $table->text('content')->nullable();
             $table->string('place')->nullable();
+            $table->string('url')->nullable();
             $table->timestamps();
         });
     }

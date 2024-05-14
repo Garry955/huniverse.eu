@@ -26,9 +26,12 @@ use App\Models\Product;
 */
 
 Route::get('/', [HomeController::class, 'index'])->name('home');
-Route::get('/about-us', [HomeController::class, 'aboutUs'])->name('about-us');
-Route::get('/aszf', [HomeController::class, 'aszf'])->name('aszf');
-Route::get('/gdpr', [HomeController::class, 'gdpr'])->name('gdpr');
+// Route::get('/about-us', [HomeController::class, 'aboutUs'])->name('about-us');
+// Route::get('/aszf', [HomeController::class, 'aszf'])->name('aszf');
+// Route::get('/gdpr', [HomeController::class, 'gdpr'])->name('gdpr');
+
+Route::get('/page/{url}', [LandingController::class, 'renderPage'])->name('landing');
+
 
 //Product routes
 Route::get('/products', [ProductController::class, 'index'])->name('product.index');

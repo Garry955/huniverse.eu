@@ -18,6 +18,7 @@
                 </svg>
             </button>
         </div>
+        {{-- menu items --}}
         <div class="hidden lg:flex lg:gap-x-12">
             <a href="{{ route('product.index') }}"
                 class="dropdown block py-6 px-3 text-lg font-semibold leading-6 text-gray-900 hover:text-primary {{ request()->is('product*') ? 'active' : '' }}">
@@ -31,10 +32,11 @@
                     @endforelse
                 </div>
             @endif
-            <a href="{{ route('contact') }}"
-                class="block py-6 px-3 text-lg font-semibold leading-6 text-gray-900 hover:text-primary {{ request()->is('contact-us') ? 'active' : '' }}">Kapcsolat</a>
-            <a href="{{ route('about-us') }}"
-                class="block py-6 px-3  text-lg font-semibold leading-6 text-gray-900 hover:text-primary {{ request()->is('about-us') ? 'active' : '' }}">Rólunk</a>
+            @forelse ($landings as $page)
+                <a href="{{ route('landing', $page->url) }}"
+                    class="block py-6 px-3 text-lg font-semibold leading-6 text-gray-900 hover:text-primary {{ request()->is($page->name) ? 'active' : '' }}">{{ $page->name }}</a>
+            @empty
+            @endforelse
         </div>
         <div class="hidden lg:flex lg:flex-1 lg:justify-end">
             @include('partials._search')

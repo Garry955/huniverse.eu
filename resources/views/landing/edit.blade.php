@@ -24,6 +24,9 @@
                     Oldal neve *
                 </label>
             </div>
+            <div class="relative mt-5 ml-3 font-bold" data-twe-input-wrapper-init>
+                Oldal url-je (automatikusan generált):<b class="text-primary"> /{{ $landing->url }}/</b>
+            </div>
             <div class="relative mb-6" data-twe-input-wrapper-init>
                 <div class="error text-red-500">
                     @error('name')

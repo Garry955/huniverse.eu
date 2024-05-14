@@ -20,19 +20,4 @@ class HomeController extends Controller
             'sliders' => Slider::latest()->get()
         ]);
     }
-
-    public function aboutUs()
-    {
-        return view('landing',  ['page' => Landing::where('name', 'Rólunk')->get()[0]]);
-    }
-
-    public function aszf()
-    {
-        return view('landing',  ['page' => Landing::where('name', 'ÁSZF')->get()[0]]);
-    }
-
-    public function gdpr()
-    {
-        return view('landing',  ['page' => Landing::where('name', 'GDPR')->get()[0]]);
-    }
 }

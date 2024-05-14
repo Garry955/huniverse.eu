@@ -22,11 +22,12 @@ class LandingController extends Controller
     public function update(Landing $landing, Request $request)
     {
         $formFields = $request->validate([
-            'name' => ['required', 'min:4', 'max:255', Rule::unique('landing_pages')],
+            'name' => ['required', 'min:4', 'max:255'],
             'lead' => 'required|min:4|max:255'
         ]);
 
-        $formFields['name'] = Str::slug($request->name, '-');
+        $formFields['place'] = $request->place;
+        $formFields['url'] = Str::slug($request->name, '-');
 
         $landing->update($formFields);
 
@@ -44,7 +45,7 @@ class LandingController extends Controller
             'name' => ['required', 'min:4', 'max:255', Rule::unique('landing_pages')],
             'lead' => 'required|min:4|max:255'
         ]);
-        $formFields['name'] = Str::slug($request->name, '-');
+        $formFields['url'] = Str::slug($request->name, '-');
         $formFields['place'] = $request->place;
         Landing::create($formFields);
 
@@ -61,5 +62,12 @@ class LandingController extends Controller
                 return redirect()->back()->with('message', 'Sikertelen törlés - az aloldal nem törölhető!');
             }
         } else return redirect()->back();
+    }
+
+    public function renderPage($url)
+    {
+        $page = Landing::where('name', $url)->get()[0];
+
+        return view('landing', ['page' => $page]);
     }
 }

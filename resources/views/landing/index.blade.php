@@ -19,6 +19,9 @@
                             Oldal neve
                         </th>
                         <th scope="col" class="text-xl font-bold text-gray-900 px-6 py-4 text-left">
+                            URL
+                        </th>
+                        <th scope="col" class="text-xl font-bold text-gray-900 px-6 py-4 text-left">
                             Oldal főcím
                         </th>
                         <th scope="col" class="text-xl font-bold text-gray-900 px-6 py-4 text-left">
@@ -36,6 +39,9 @@
                                 class="bg-white border-b transition duration-300 ease-in-out hover:bg-gray-100 {{ $landing->name == 'order-success' ? 'bg-red-300 hover:bg-red-200' : '' }}">
                                 <td class="text-xl font-bold text-gray-900 px-6 py-4 whitespace-nowrap">
                                     {{ $landing->name }}
+                                </td>
+                                <td class="text-xl text-gray-900 font-light px-6 py-4 whitespace-nowrap">
+                                    /{{ $landing->url }}/
                                 </td>
                                 <td class="text-xl text-gray-900 font-light px-6 py-4 whitespace-nowrap">
                                     {{ $landing->lead }}

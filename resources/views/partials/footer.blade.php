@@ -4,17 +4,21 @@
             <div class="flex w-full md:w-4/12">
                 <div class="text-2xl px-4">
                     <h3 class="font-bold text-gray-900 dark:text-gray-100 mb-4">Menü</h3>
-                    <a href="/products/" class="block text-base text-primary font-bold hover:underline mt-1">Termékek</a>
-                    <a href="/contact-us/"
-                        class="block text-base text-primary font-bold hover:underline mt-1">Kapcsolat</a>
-                    <a href="/about-us/" class="block text-base text-primary font-bold hover:underline mt-1">Rólunk</a>
+                    @forelse ($menus as $menu)
+                        <a href="{{ route('landing', $menu->url) }}"
+                            class="block text-base text-primary font-bold hover:underline mt-1">{{ $menu->name }}</a>
+                    @empty
+                    @endforelse
                 </div>
             </div>
             <div class="flex w-full md:w-4/12 px-4">
                 <div class="text-2xl">
                     <h3 class="font-bold text-gray-900 dark:text-gray-100 mb-4">Hivatkozások</h3>
-                    <a href="/aszf/" class="block text-base text-primary font-bold hover:underline mt-1">ÁSZF</a>
-                    <a href="/gdpr/" class="block text-base text-primary font-bold hover:underline mt-1">GDPR</a>
+                    @forelse ($links as $link)
+                        <a href="{{ route('landing', $link->url) }}"
+                            class="block text-base text-primary font-bold hover:underline mt-1">{{ $link->name }}</a>
+                    @empty
+                    @endforelse
                 </div>
             </div>
             <div class="flex w-full md:w-4/12 px-4">

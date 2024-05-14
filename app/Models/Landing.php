@@ -11,5 +11,5 @@ class Landing extends Model
 
     protected $table = 'landing_pages';
 
-    protected $fillable = ['name', 'lead', 'content'];
+    protected $fillable = ['name', 'lead', 'content', 'place', 'url'];
 }
