@@ -20,13 +20,45 @@ p {
 }
 
 a.active {
-    color: rgb(59 113 202);
-    -webkit-box-shadow: inset 0px 0px 25px 1px rgba(59, 113, 202, 0.47);
-    -moz-box-shadow: inset 0px 0px 25px 1px rgba(59, 113, 202, 0.47);
-    box-shadow: inset 0px 0px 25px 1px rgba(59, 113, 202, 0.47);
+    color: lightgray;
+    -webkit-box-shadow: inset 0px 0px 25px 1px #a0bfcb;
+    -moz-box-shadow: inset 0px 0px 25px 1px #f57425;
+    box-shadow: inset 0px 0px 25px 1px #f57425;
 }
 
 a.dropdown:hover + .dropdown-menu,
 .dropdown-menu:hover {
     display: block;
+}
+
+.text-primary {
+    color: #f57425 !important;
+}
+
+.text-primary:hover,
+.hover\:text-primary:hover {
+    color: #fff !important;
+}
+
+#search_input button:hover,
+#search:hover {
+    color: #f57425 !important;
+}
+
+.bg-primary {
+    background-color: #f57425 !important;
+}
+.bg-primary:hover {
+    background-color: #c75d1c !important;
+}
+
+header,
+#sidebar {
+    background: rgb(241, 109, 21);
+    background: linear-gradient(
+        0deg,
+        rgba(241, 109, 21, 1) 0%,
+        rgba(210, 130, 76, 1) 16%,
+        rgba(255, 155, 78, 1) 100%
+    );
 }

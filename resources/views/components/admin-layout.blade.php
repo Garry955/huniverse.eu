@@ -21,78 +21,14 @@
 <body class="bg-blue-100 " id="body">
     @if (session()->has('message'))
         <div x-data="{ show: true }" x-init="setTimeout(() => show = false, 3000)" x-show="show"
-            class="fixed top-0 bg-primary-800 text-white px-48 py-5 text-center text-2xl left-0 right-0 z-50 shadow-md">
+            class="fixed top-0 opacity-95 bg-primary text-white px-48 py-2  text-center text-2xl left-0 right-0 z-50 shadow-md">
             <p>
                 {{ session('message') }}
             </p>
         </div>
     @endif
-    @if (Request::is('admin/*'))
-        {{-- Header --}}
-        <header id="header" class="fixed top-0 left-0 right-0 z-40">
-            <nav class="bg-white border-b border-gray-300">
-                <div class="flex justify-between items-center px-9">
-                    <!-- Menu icon -->
-                    <button id="menu-button" class="lg:hidden">
-                        <i class="fas fa-bars text-cyan-500 text-lg"></i>
-                    </button>
-                    <!-- Logo -->
-                    <div class="ml-1">
-                        <a href="/admin/dashboard">
-                            <img src="https://tailwindui.com/img/logos/mark.svg?color=indigo&shade=600" alt="logo"
-                                class="h-12 w-20">
-                        </a>
-                    </div>
-
-                    <!-- Rigt-top icons -->
-                    <div class="space-x-4 text-xl p-3">
-                        <b class="text-primary">{{ auth()->user()->name }}</b>
-                        <!-- Logout -->
-                        <a class="hover:text-primary font-bold" href="{{ route('admin.logout') }}">
-                            <i class="fa-solid fa-right-from-bracket"></i>
-                            Kijelentkezés
-                        </a>
-                    </div>
-                </div>
-            </nav>
-        </header>
-        <!-- Sidebar -->
-        <div id="sidebar" class="lg:block hidden pt-20 z-0 bg-white w-64 h-screen fixed rounded-none border-none">
-            <!-- Items -->
-            <div class="p-4 space-y-4">
-                <a href="{{ route('admin.dashboard') }}"
-                    class="px-4 py-3 flex items-center space-x-4 rounded-md text-gray-500 group hover:text-primary {{ request()->is('admin/dashboard') ? 'active' : '' }}">
-                    <i class="fa-solid fa-store"></i>
-                    <span>Termékek</span>
-                </a>
-                <a href="{{ route('admin.orders') }}"
-                    class="px-4 py-3 flex items-center space-x-4 rounded-md text-gray-500 group hover:text-primary {{ request()->is('admin/order*') ? 'active' : '' }}">
-                    <i class="fa-solid fa-cart-shopping"></i>
-                    <span>Rendelések</span>
-                </a>
-                <a href="{{ route('admin.users') }}"
-                    class="px-4 py-3 flex items-center space-x-4 rounded-md text-gray-500 group hover:text-primary {{ request()->is('admin/user*') ? 'active' : '' }}">
-                    <i class="fa-solid fa-users"></i>
-                    <span>Felhasználók</span>
-                </a>
-                <a href="{{ route('admin.contacts') }}"
-                    class="px-4 py-3 flex items-center space-x-4 rounded-md text-gray-500 group hover:text-primary {{ request()->is('admin/contact*') ? 'active' : '' }}">
-                    <i class="fa-regular fa-envelope"></i>
-                    <span>Üzenetek</span>
-                </a>
-                <a href="{{ route('admin.landings') }}"
-                    class="px-4 py-3 flex items-center space-x-4 rounded-md text-gray-500 group hover:text-primary {{ request()->is('admin/landing*') ? 'active' : '' }}">
-                    <i class="fa-regular fa-newspaper"></i>
-                    <span>Aloldalak</span>
-                </a>
-                <a href="{{ route('admin.slider') }}"
-                    class="px-4 py-3 flex items-center space-x-4 rounded-md text-gray-500 group hover:text-primary {{ request()->is('admin/slider*') ? 'active' : '' }}">
-                    <i class="fa-regular fa-images"></i>
-                    <span>Diák</span>
-                </a>
-            </div>
-        </div>
-    @endif
+    @include('partials.admin_header');
+    @include('partials.admin_sidebar');
     <!-- Main content -->
     <div class="lg:flex gap-4 items-stretch" class="main">
         <div class="lg:w-full min-h-screen lg:ml-64 px-6 py-8 mt-[40px]">

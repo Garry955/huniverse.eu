@@ -1,4 +1,4 @@
-<header class="bg-white fixed top-0 left-0 right-0 z-40">
+<header class="fixed top-0 left-0 right-0 z-40">
     <nav class="mx-auto flex max-w-7xl items-center justify-between px-6 lg:px-8" aria-label="Global">
         <div class="flex lg:flex-1">
             <a href="/" class="-m-1.5 p-1.5">
@@ -34,7 +34,7 @@
             @endif
             @forelse ($landings as $page)
                 <a href="{{ route('landing', $page->url) }}"
-                    class="block py-6 px-3 text-lg font-semibold leading-6 text-gray-900 hover:text-primary {{ request()->is($page->name) ? 'active' : '' }}">{{ $page->name }}</a>
+                    class="block py-6 px-3 text-lg font-semibold leading-6 text-gray-900 hover:text-primary {{ request()->is('page/' . $page->url) ? 'active' : '' }}">{{ $page->name }}</a>
             @empty
             @endforelse
         </div>

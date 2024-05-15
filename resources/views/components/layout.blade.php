@@ -19,7 +19,7 @@
 <body class="bg-blue-100 pt-[50px]">
     @if (session()->has('message'))
         <div x-data="{ show: true }" x-init="setTimeout(() => show = false, 3000)" x-show="show"
-            class="fixed z-50 top-0 opacity-95 bg-primary-800 text-white px-48 py-5 text-center text-2xl left-0 right-0 shadow-md">
+            class="fixed z-50 top-0 opacity-95 bg-primary text-white px-48 py-4 text-center text-2xl left-0 right-0 shadow-md">
             <p>
                 {{ session('message') }}
             </p>
