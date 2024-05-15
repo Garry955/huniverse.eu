@@ -1,18 +1,20 @@
 <x-layout>
-    <section class="products container mx-auto my-20">
+    <section class="products container mx-auto lg:my-20">
         @if (!$groups->isEmpty())
             <div class="bg-white rounded-lg p-4 shadow-md mb-10">
                 <div class="p-3 w-full">
                     <div class="head">
                         <div class="px-4 flex justify-between flex-row mb-5 py-2 text-left border-b-2 w-full">
                             <h2 class="text-2xl mb-2 font-bold text-gray-600">Termékcsoportok</h2><a
-                                href={{ route('product.index') }} class=" font-bold text-blue-600">Összes
+                                href={{ route('product.index') }}
+                                class=" font-bold text-primary hidden lg:inline-block">Összes
                                 termék <i class="fa-solid fa-right-from-bracket"></i></a>
                         </div>
                     </div>
-                    <div class="">
+                    <div class="lg:block grid grid-cols-3 items-center lg:text-left text-center">
                         @forelse ($groups as $group)
-                            <div class="hover:bg-primary-300 inline-block mb-3  mr-5 rounded-lg bg-primary-200">
+                            <div
+                                class="hover:bg-primary-300 inline-block mb-3 w-[90%] lg:w-auto lg:mr-5 rounded-md bg-primary hover:text-white">
                                 <a href="/products?search={{ $group->name }}" class="p-3 inline-block font-bold">
                                     {{ $group->name ?? '' }}
 

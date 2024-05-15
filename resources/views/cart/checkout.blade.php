@@ -9,9 +9,9 @@
             }
         }
     </style>
-    <div class="mb-20 pt-20 container mx-auto">
-        <div class="mx-auto justify-center px-6 md:flex  xl:px-0">
-            <div class="rounded-lg md:w-3/4">
+    <div class="mb-20 lg:pt-20 container mx-auto">
+        <div class="mx-auto justify-center lg:px-6 lg:flex flex flex-col-reverse ">
+            <div class="rounded-lg lg:w-3/4">
                 <div class="mb-12 lg:w-3/4">
                     <form method="POST" action="{{ route('order.store') }}">
                         @csrf
@@ -129,7 +129,7 @@
                 </div>
             </div>
             <!-- Cart details -->
-            <div class="mt-6 h-full rounded-lg border bg-white p-6 shadow-md md:mt-0 md:w-2/5 ml-0">
+            <div class="mt-6 h-full rounded-lg border bg-white p-6 shadow-md lg:mt-0 lg:w-2/5 ml-0 mb-10 lg:mb-0">
                 <h1 class="mb-5 text-2xl font-bold">Kosár tartalma</h1>
                 <div class="rounded-lg mb-10">
                     @forelse ($cartItems as $item)
@@ -140,10 +140,10 @@
                                 <div class="mt-5 sm:mt-0">
                                     <h2 class="text-lg font-bold text-gray-900">{{ $item->product->name }}</h2>
                                     <p class="mt-1 text-xs text-gray-700">{{ $item->product->description }}</p>
-                                    <b class="mt-1 text-xs text-gray-700">Ár: {{ $item->product->price }} Ft/db</b>
-                                    <p class="mt-1 text-xs text-gray-700">Mennyiség: {{ $item->quantity }} Ft/db</p>
+                                    <b class="mt-1 text-xs text-gray-700">Ár: {{ $item->product->price }} Ft/db.</b>
+                                    <p class="mt-1 text-xs text-gray-700">Mennyiség: {{ $item->quantity }} db.</p>
                                     <p class="mt-1 text-xs text-gray-700">összeg:
-                                        {{ $item->quantity * $item->product->price }} Ft/db
+                                        {{ $item->quantity * $item->product->price }} Ft
                                     </p>
                                 </div>
                             </div>

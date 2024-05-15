@@ -18,10 +18,10 @@
 
 </head>
 
-<body class="bg-blue-100 " id="body">
+<body class="bg-blue-100 pb-20">
     @if (session()->has('message'))
         <div x-data="{ show: true }" x-init="setTimeout(() => show = false, 3000)" x-show="show"
-            class="fixed top-0 opacity-95 bg-primary text-white px-48 py-2  text-center text-2xl left-0 right-0 z-50 shadow-md">
+            class="fixed z-50 top-0 opacity-95 bg-primary text-white py-7  lg:px-48 lg:py-4 text-center text-2xl left-0 right-0 shadow-md">
             <p>
                 {{ session('message') }}
             </p>
@@ -31,7 +31,7 @@
     @include('partials.admin_sidebar');
     <!-- Main content -->
     <div class="lg:flex gap-4 items-stretch" class="main">
-        <div class="lg:w-full min-h-screen lg:ml-64 px-6 py-8 mt-[40px]">
+        <div class="lg:w-full min-h-screen lg:ml-64 px-6 lg:py-8 lg:mt-[40px] mt-20">
             {{ $slot }}
         </div>
     </div>

@@ -14,9 +14,9 @@
             }
         }
     </style>
-    <div class="mb-20 pt-20 container mx-auto">
+    <div class="mb-20 lg:pt-20 container mx-auto">
         <h1 class="mb-10 text-3xl font-bold">Kosár</h1>
-        <div class="mx-auto justify-center px-6 md:flex md:space-x-6 xl:px-0">
+        <div class="mx-auto justify-center lg:px-6 md:flex md:space-x-6 xl:px-0">
             @if ($totalPrice)
                 <div class="rounded-lg md:w-2/3">
                 @else
@@ -36,7 +36,7 @@
                             <p class="mt-1 text-sm text-gray-700">Készleten: {{ $item->product->stock }}</p>
 
                         </div>
-                        <div class="pt-20 flex justify-between sm:space-y-6 sm:mt-0 sm:block sm:space-x-6">
+                        <div class="lg:pt-20 flex justify-between flex-col lg:flex-auto">
                             <div class="border-gray-100">
                                 <form action="{{ route('cart.updateItem', $cartID) }}" method="POST">
                                     @csrf
@@ -44,21 +44,21 @@
                                     <p class="inline-block mr-2 font-bold">Mennyiség</p>
                                     <input type="number" id="quantity" name="quantity" min="0"
                                         max="{{ $item->product->stock }}" step="1" value="{{ $item->quantity }}"
-                                        class="border-form-stroke text-body-color placeholder-body-color focus:border-primary active:border-primary rounded-lg border-[1.5px] py-2 px-5 font-medium outline-none transition disabled:cursor-default disabled:bg-[#F5F7FD]" />
+                                        class="border-form-stroke text-body-color placeholder-body-color  focus:border-primary active:border-primary rounded-lg border-[1.5px] py-2 px-5 font-medium outline-none transition disabled:cursor-default disabled:bg-[#F5F7FD]" />
                                     <button type="submit"
-                                        class="bg-primary inline-flex items-center justify-center rounded-md py-2 px-10 text-center text-base font-normal text-white ">
+                                        class="bg-primary inline-flex items-center justify-center rounded-md py-2 p-3 ml-5 lg:ml-0 lg:px-10 text-center text-base font-normal text-white ">
                                         Módosít</button>
                                 </form>
                             </div>
-                            <div class="text-right">
+                            <div class="lg:text-right mt-5 lg:mt-0">
                                 <p class="inline-block text-xl">Teljes
                                     ár: <b>{{ $item->product->price * $item->quantity }} Ft</b></p>
-                                <form class="inline-block ml-5" action="{{ route('cart.deleteItem', $cartID) }}"
-                                    method="POST">
+                                <form class="lg:inline-block lg:ml-5 mt-3 lg:mt-0"
+                                    action="{{ route('cart.deleteItem', $cartID) }}" method="POST">
                                     @csrf
                                     <input type="hidden" name="item_id" value="{{ $item->product->id }}" />
                                     <button type="submit"
-                                        class="bg-primary inline-flex items-center justify-center rounded-md py-2 px-4 text-center text-base font-normal text-white">
+                                        class="bg-primary w-1/2 lg:w-auto inline-flex items-center justify-center rounded-md py-2 px-4 text-center text-base font-normal text-white">
                                         <i class="fa-solid fa-trash-can"></i>
                                     </button>
                                 </form>
@@ -88,7 +88,7 @@
                     </div>
                 </div>
                 <a href="{{ route('cart.checkout') }}" type="submit"
-                    class="block text-center mt-6 w-full rounded-md bg-blue-500 py-1.5 font-medium text-blue-50 hover:bg-blue-600">Adatok
+                    class="block text-center mt-6 w-full rounded-md bg-primary text-white py-1.5 font-medium ">Adatok
                     megadása</a>
             </div>
         @endif

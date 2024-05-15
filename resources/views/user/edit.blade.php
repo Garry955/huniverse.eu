@@ -1,9 +1,9 @@
 <x-layout>
     <section class="container mx-auto">
         <div class="">
-            <div class="flex flex-wrap mt-20 justify-center lg:justify-between">
+            <div class="flex flex-wrap lg:mt-20 justify-center lg:justify-between">
                 <!-- Left column container with background-->
-                <div class="shrink-1 mb-12 grow-0 basis-auto md:mb-10 md:w-9/12 md:shrink-0 lg:w-5/12 xl:w-5/12">
+                <div class="shrink-1 mb-12 grow-0 basis-auto md:mb-10 w-full md:shrink-0 lg:w-5/12 xl:w-5/12">
                     <form method="POST" action="{{ route('user.update') }}">
                         @csrf
                         <!-- Separator between social media sign in and email/password sign in -->
@@ -157,7 +157,7 @@
                 </div>
 
                 <!-- Right column container -->
-                <div class="mb-12 md:mb-10 md:w-8/12 lg:w-5/12 xl:w-5/12">
+                <div class="mb-12 md:mb-10 w-full lg:w-5/12 xl:w-5/12">
                     <!-- Separator between social media sign in and email/password sign in -->
                     <div
                         class="my-4 flex items-center before:mt-0.5 before:flex-1 before:border-t before:border-neutral-300 after:mt-0.5 after:flex-1 after:border-t after:border-neutral-300 dark:before:border-neutral-500 dark:after:border-neutral-500">

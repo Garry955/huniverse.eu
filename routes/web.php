@@ -84,6 +84,7 @@ Route::get('/contact-us', [ContactController::class, 'index'])->name('contact');
 //Admin/contact routes
 Route::get('/admin/contacts', [ContactController::class, 'contactList'])->name('admin.contacts')->middleware('isAdmin');
 Route::delete('/admin/contact/delete/{contact}', [ContactController::class, 'destroy'])->name('contact.destroy')->middleware('isAdmin');
+Route::get('/admin/contact/{contact}', [ContactController::class, 'show'])->name('contact.show')->middleware('isAdmin');
 
 //Admin routes
 Route::get('/admin', [AdminController::class, 'index'])->name('admin.login');

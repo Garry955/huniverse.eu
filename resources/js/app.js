@@ -1,17 +1,19 @@
 import "./bootstrap";
 import "./hero";
 
-// var body = document.getElementById("body");
-// window.onscroll = function (e) {
-//     body.classList.add("scrolled");
-// };
-// if (body.scrollTop == 0 || document.documentElement.scrollTop == 0) {
-//     body.classList.remove("scrolled");
-// }
+let mobileMenuOpen = document.getElementById("mobile_menu_open");
+let mobileMenuOpenIcon = document.getElementById("menu_open_icon");
+let mobileMenuCloseIcon = document.getElementById("menu_close_icon");
+let mobileMenuItems = document.getElementById("menu_items");
+mobileMenuOpen.addEventListener("click", function () {
+    mobileMenuCloseIcon.classList.toggle("hidden");
+    mobileMenuOpenIcon.classList.toggle("hidden");
+    mobileMenuItems.classList.toggle("open");
+});
 
-var search = document.getElementById("search");
+var search = document.getElementById("search_button");
 var searchInput = document.getElementById("search_input");
 
 search.addEventListener("click", function () {
-    searchInput.classList.toggle("hidden");
+    searchInput.classList.toggle("lg:hidden");
 });

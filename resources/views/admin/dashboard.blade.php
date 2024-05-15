@@ -7,10 +7,10 @@
             <div class="head">
                 <div class="px-4 flex justify-between flex-row mb-5 py-2 text-left border-b-2 w-full">
                     <h2 class="text-2xl mb-2 font-bold text-gray-600">Termékcsoportok</h2>
-                    <span id="new_group" class="cursor-pointer text-2xl mb-2 font-bold text-primary"><i
-                            class="fa-regular fa-square-plus mr-2"></i>Új
-                        termékcsoport
-                        </a>
+                    <span id="new_group" class="cursor-pointer text-2xl mb-2 font-bold text-[#f57425]"><i
+                            class="fa-regular fa-square-plus mr-2"></i><span class="lg:inline-block hidden">Új
+                            termékcsoport</span>
+                    </span>
                 </div>
             </div>
             <div id="add_group" class="mb-10 lg:w-1/2 {{ session()->has('visible') ? '' : 'hidden' }}">
@@ -81,21 +81,21 @@
 
     <!-- Table -->
     <div class="bg-white rounded-lg p-4 shadow-md my-4">
-        <div class="p-3 w-full">
+        <div class="lg:p-3 w-full overflow-x-scroll lg:overflow-hidden">
             <div class="head">
                 <div class="px-4 flex justify-between flex-row py-2 text-left border-b-2 w-full">
                     <h2 class="text-2xl mb-2 font-bold text-gray-600">Termékek
                         {{ request()->query() ? '- ' . request()->query()['search'] : '' }}</h2>
-                    <a href="{{ route('product.create') }}" class="text-2xl mb-2 font-bold text-primary"><i
+                    <a href="{{ route('product.create') }}" class="text-2xl mb-2 font-bold text-[#f57425]"><i
                             class="fa-regular fa-square-plus mr-2"></i>Új
                         termék
                     </a>
                 </div>
             </div>
-            <table class="min-w-full">
+            <table class="lg:min-w-full">
                 <thead class="bg-gray-200 border-b">
                     <tr>
-                        <th scope="col" class="text-xl font-bold text-gray-900 px-6 py-4 text-left">
+                        <th scope="col" class=" text-xl font-bold text-gray-900 px-6 py-4 text-left">
                             #ID
                         </th>
                         <th scope="col" class="text-xl font-bold text-gray-900 px-6 py-4 text-left">
@@ -119,44 +119,44 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <x-admin-list>
-                        @forelse ($products as $product)
-                            <tr class="bg-white border-b transition duration-300 ease-in-out hover:bg-gray-100">
-                                <td class="px-6 py-4 whitespace-nowrap text-xl font-medium text-gray-900">
-                                    {{ $product->id }}</td>
-                                <td class="text-xl text-gray-900 font-light px-6 py-4 whitespace-nowrap">
-                                    <img src="{{ $product->image ? asset('/storage/products/' . $product->image) : asset('images/no-image.png') }}"
-                                        alt="product-image" class="w-[142px]" />
+                    @forelse ($products as $product)
+                        <tr class="bg-white relative border-b transition duration-300 ease-in-out hover:bg-gray-100">
 
-                                </td>
-                                <td class="text-xl text-gray-900 font-light px-6 py-4 whitespace-nowrap">
-                                    {{ $product->name }}
-                                </td>
-                                <td class="text-xl text-gray-900 font-light px-6 py-4 whitespace-nowrap">
-                                    {{ $product->price }} Ft
-                                </td>
-                                <td class="text-xl text-gray-900 font-light px-6 py-4 whitespace-nowrap">
-                                    {{ $product->stock }} db.
-                                </td>
-                                <td class="text-xl font-bold text-gray-900 px-6 py-4 whitespace-nowrap">
-                                    {{ $product->group->name ?? '' }}
-                                </td>
-                                <td class="text-center text-2xl">
-                                    <a href="{{ route('product.edit', $product->id) }}" class="mr-8"><i
-                                            class="fa-solid fa-pen-to-square text-primary"></i></a>
-                                    <form class="inline-block" action="{{ route('product.destroy', $product->id) }}"
-                                        method="POST">
-                                        @csrf
-                                        @method('DELETE')
-                                        <button type="submit"><i
-                                                class="fa-solid fa-trash-can text-red-500"></i></button>
-                                    </form>
-                                </td>
-                            </tr>
 
-                        @empty
-                        @endforelse
-                    </x-admin-list>
+                            <td class="px-6 py-4 whitespace-nowrap text-xl font-medium text-gray-900">
+                                {{ $product->id }}</td>
+                            <td class="text-xl text-gray-900 font-light px-6 py-4 whitespace-nowrap">
+                                <img src="{{ $product->image ? asset('/storage/products/' . $product->image) : asset('images/no-image.png') }}"
+                                    alt="product-image" class="w-[142px]" />
+                                <a href="{{ route('product.edit', $product->id) }}"
+                                    class="lg:hidden absolute z-10 top-0 bottom-0 left-0 right-0"></a>
+                            </td>
+                            <td class="text-xl text-gray-900 font-light px-6 py-4 whitespace-nowrap">
+                                {{ $product->name }}
+                            </td>
+                            <td class="text-xl text-gray-900 font-light px-6 py-4 whitespace-nowrap">
+                                {{ $product->price }} Ft
+                            </td>
+                            <td class="text-xl text-gray-900 font-light px-6 py-4 whitespace-nowrap">
+                                {{ $product->stock }} db.
+                            </td>
+                            <td class="text-xl font-bold text-gray-900 px-6 py-4 whitespace-nowrap">
+                                {{ $product->group->name ?? '' }}
+                            </td>
+                            <td class="text-center text-2xl relative z-30">
+                                <a href="{{ route('product.edit', $product->id) }}" class="mr-8 "><i
+                                        class="fa-solid fa-pen-to-square text-primary"></i></a>
+                                <form class="inline-block" action="{{ route('product.destroy', $product->id) }}"
+                                    method="POST">
+                                    @csrf
+                                    @method('DELETE')
+                                    <button type="submit"><i class="fa-solid fa-trash-can text-red-500"></i></button>
+                                </form>
+                            </td>
+                        </tr>
+
+                    @empty
+                    @endforelse
                 </tbody>
             </table>
         </div>

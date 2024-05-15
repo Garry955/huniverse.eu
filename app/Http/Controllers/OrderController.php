@@ -64,7 +64,7 @@ class OrderController extends Controller
                 ]);
             }
         }
-        return redirect('/order/success')->with(['message' => 'Sikeres vásárlás!', 'orderId' => $order->id]);
+        return redirect('/page/order-success')->with(['message' => 'Sikeres vásárlás!', 'orderId' => $order->id]);
     }
 
     public function success()

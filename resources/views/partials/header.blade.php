@@ -1,25 +1,45 @@
-<header class="fixed top-0 left-0 right-0 z-40">
-    <nav class="mx-auto flex max-w-7xl items-center justify-between px-6 lg:px-8" aria-label="Global">
+<header class="fixed top-0 left-0 right-0 z-40 py-3">
+    <nav class="mx-auto flex max-w-7xl items-center justify-between  px-6 lg:px-8" aria-label="Global">
         <div class="flex lg:flex-1">
             <a href="/" class="-m-1.5 p-1.5">
-                <span class="sr-only">Huniverse.eu</span>
                 <img class="h-8 w-auto" src="https://tailwindui.com/img/logos/mark.svg?color=indigo&shade=600"
                     alt="Huniverse.eu">
             </a>
         </div>
+        {{-- Mobile menu button --}}
         <div class="flex lg:hidden">
-            <button type="button"
-                class="-m-2.5 inline-flex items-center justify-center rounded-md p-2.5 text-gray-700">
-                <span class="sr-only">Open main menu</span>
-                <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"
-                    aria-hidden="true">
-                    <path stroke-linecap="round" stroke-linejoin="round"
-                        d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" />
-                </svg>
-            </button>
+            <a href="{{ route('cart.show') }}"
+                class="block py-6 mr-5 px-3 text-xl font-semibold leading-6 text-gray-900   hover:text-primary {{ request()->is('cart*') ? 'active' : '' }} relative"><i
+                    class="fa-solid fa-cart-shopping"></i> <b
+                    class="absolute top-3 right-[-5px] text-center z-10 border-solid bg-black text-sm text-white rounded-full block px-2">{{ $cartTotal }}</b></a>
+            <div class="flex lg:hidden" id="mobile_menu_open">
+                <button type="button"
+                    class="-m-2.5 inline-flex items-center justify-center rounded-md p-2.5 text-gray-700">
+                    <i class="fa-solid fa-bars text-2xl" id="menu_open_icon"></i>
+                    <i class="fa-solid fa-xmark text-2xl hidden" id="menu_close_icon"></i>
+                </button>
+            </div>
         </div>
         {{-- menu items --}}
-        <div class="hidden lg:flex lg:gap-x-12">
+        <div class="hidden lg:flex lg:gap-x-12" id="menu_items">
+            <div class="lg:hidden">
+                {{-- MOBILE search --}}
+                <x-search></x-search>
+            </div>
+            {{-- User menu MOBILE --}}
+            <div class="lg:hidden">
+                @if (Auth::check())
+                    <a href="{{ route('user.edit') }}"
+                        class="block py-6 px-3 text-lg font-semibold  text-gray-900 {{ request()->is('user*') ? 'active' : '' }}">
+                        <span aria-hidden="true">Profil - {{ auth()->user()->name }}</span></a>
+                    <a href="{{ route('logout') }}" class="block py-6 px-3 text-lg font-semibold  text-gray-900">
+                        <span aria-hidden="true">Kijelentkezés</span></a>
+                @else
+                    <a href="{{ route('login') }}"
+                        class="block py-6 px-3 text-lg font-semibold  text-gray-900 {{ request()->is('login') ? 'active' : '' }}">
+                        <span aria-hidden="true">Bejelentkezés</span></a>
+                @endif
+            </div>
             <a href="{{ route('product.index') }}"
                 class="dropdown block py-6 px-3 text-lg font-semibold leading-6 text-gray-900 hover:text-primary {{ request()->is('product*') ? 'active' : '' }}">
                 Termékek</a>
@@ -39,7 +59,24 @@
             @endforelse
         </div>
         <div class="hidden lg:flex lg:flex-1 lg:justify-end">
-            @include('partials._search')
+            <form action="/products"
+                class="lg:pt-5 text-right lg:text-left pb-5 lg:mb-0 lg:border-none border-b-[1px] mr-1 border-solid border-white">
+                <div class="relative rounded-lg">
+                    <div id="search_input" class="lg:hidden ease-in-out duration-300 ">
+                        <input type="text" name="search" value="{{ request()->query()['search'] ?? '' }}"
+                            class="w-full h-[42px] lg:h-fit pl-5 pr-20 py-1 rounded-lg z-0 focus:shadow focus:outline-none"
+                            placeholder="Keresés.." />
+                        <button type="submit"
+                            class="absolute top-[5px] lg:top-[1px] text-2xl lg:text-xl right-3 lg:right-10 hover:text-primary"><i
+                                class="fa-solid fa-right-from-bracket"></i></button>
+                    </div>
+                    <div id="search_button" class="absolute lg:top-[1px] lg:right-2 lg:block">
+                        <div class="text-xl hover:cursor-pointer ">
+                            <i class="fa-solid fa-magnifying-glass" id="search_submit_button"></i>
+                        </div>
+                    </div>
+                </div>
+            </form>
             <a href="{{ route('cart.show') }}"
                 class="block py-6 px-3 text-xl font-semibold leading-6 text-gray-900   hover:text-primary {{ request()->is('cart*') ? 'active' : '' }} relative"><i
                     class="fa-solid fa-cart-shopping"></i> <b

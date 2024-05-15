@@ -3,7 +3,7 @@
 
     <h1 class="mb-10 text-3xl font-bold">Kapcsolatfelvétel</h1>
 </div>
-<form action="{{ route('contact.store') }}" method="POST">
+<form action="{{ route('contact.store') }}" method="POST" class="lg:max-w-3xl">
     @csrf
     <!-- Separator between social media sign in and email/password sign in -->
 
@@ -66,7 +66,7 @@
     <div class="mb-6 flex items-center justify-between">
 
         <!-- TERMS LINK -->
-        <a href="#!" class="font-bold text-blue-500">ÁSZF</a>
+        <a href="#!" class="font-bold text-primary underline">ÁSZF</a>
     </div>
 
     <!-- Register button -->

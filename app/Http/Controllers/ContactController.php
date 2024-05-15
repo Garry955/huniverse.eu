@@ -56,4 +56,9 @@ class ContactController extends Controller
             return redirect()->back();
         }
     }
+
+    public function show(Contact $contact)
+    {
+        return view('contact.show', ['contact' => $contact]);
+    }
 }

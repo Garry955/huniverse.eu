@@ -3,15 +3,15 @@
 
     <!-- Table -->
     <div class="bg-white rounded-lg p-4 shadow-md my-4">
-        <div class="p-3 w-full">
-            <div class="head">
-                <div class="px-4 flex justify-between flex-row py-2 text-left border-b-2 w-full">
-                    <h2 class="text-2xl mb-2 font-bold text-gray-600">Kapcsolatfelvételek</h2>
-                    <a href="{{ route('landing.create') }}" class="text-2xl mb-2 font-bold text-primary"><i
-                            class="fa-regular fa-square-plus mr-2"></i>Új aloldal
-                    </a>
-                </div>
+        <div class="head pl-3">
+            <div class="px-4 flex justify-between flex-row py-2 text-left border-b-2 w-full">
+                <h2 class="text-2xl mb-2 font-bold text-gray-600">Aloldalak</h2>
+                <a href="{{ route('landing.create') }}" class="text-2xl mb-2 font-bold text-[#f57425]"><i
+                        class="fa-regular fa-square-plus mr-2"></i><span class="hidden lg:inline-block">Új aloldal</span>
+                </a>
             </div>
+        </div>
+        <div class="p-3 w-full overflow-x-scroll  lg:overflow-hidden">
             <table class="min-w-full">
                 <thead class="bg-gray-200 border-b">
                     <tr>
@@ -47,6 +47,7 @@
                                     {{ $landing->lead }}
                                 </td>
                                 <td class="text-xl text-gray-900 font-light px-6 py-4 whitespace-nowrap">
+                                    {{ $landing->place == '' ? 'sehol' : $landing->place }}
                                     {{ $landing->place == 'both' ? 'footer+header' : $landing->place }}
                                 </td>
                                 <td class="text-center text-2xl"><a href="{{ route('landing.edit', $landing->id) }}"

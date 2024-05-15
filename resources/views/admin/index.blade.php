@@ -1,15 +1,15 @@
     <x-admin-layout>
-        <section class="h-screen container mx-auto">
+        <section class="h-screen container w-full  lg:w-auto mx-auto">
             <div class="h-full">
-                <div class="flex h-full flex-wrap items-center justify-center lg:justify-between">
+                <div class="flex h-full w-full lg:flex-wrap items-center justify-center lg:justify-between">
                     <!-- Left column container with background-->
-                    <div class="shrink-1 mb-12 grow-0 basis-auto md:mb-0 md:w-3/4 mx-auto">
+                    <div class="shrink-1 w-full mb-12 grow-0 basis-auto lg:mb-0 lg:w-3/4 mx-auto">
                         <form action="{{ route('admin.authenticate') }}" id="admin_login_form">
                             @csrf
                             <!-- Separator between social media sign in and email/password sign in -->
                             <div
                                 class="my-4 flex items-center before:mt-0.5 before:flex-1 before:border-t before:border-neutral-300 after:mt-0.5 after:flex-1 after:border-t after:border-neutral-300 dark:before:border-neutral-500 dark:after:border-neutral-500">
-                                <p class="mx-4 mb-0 text-center font-semibold dark:text-white text-2xl">
+                                <p class="mx-4 text-center font-semibold dark:text-white text-2xl mb-20">
                                     Admin Belépés
                                 </p>
                             </div>

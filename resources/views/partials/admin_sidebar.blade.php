@@ -1,6 +1,7 @@
 @if (Request::is('admin/*'))
     <!-- Sidebar -->
-    <div id="sidebar" class="  lg:block hidden pt-20 z-0 w-64 h-screen fixed rounded-none border-none">
+    <div id="sidebar"
+        class="lg:block z-40 hidden top-[48px] lg:top-[52px] lg:pt-20 lg:w-64 h-screen fixed w-full rounded-none border-none">
         <!-- Items -->
         <div class="p-4 space-y-4">
             <a href="{{ route('admin.dashboard') }}"
@@ -33,6 +34,12 @@
                 <i class="fa-regular fa-images"></i>
                 <span>Diák</span>
             </a>
+            <a href="{{ route('admin.logout') }}"
+                class="px-4 py-3 flex items-center space-x-4 rounded-md font-bold hover:text-primary">
+                <i class="fa-solid fa-right-from-bracket"></i>
+                <span>Kijelentkezés</span>
+            </a>
+
         </div>
     </div>
 @endif

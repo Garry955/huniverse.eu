@@ -3,16 +3,16 @@
 
     <!-- Table -->
     <div class="bg-white rounded-lg p-4 shadow-md my-4">
-        <div class="p-3 w-full">
-            <div class="head">
-                <div class="px-4 flex justify-between flex-row py-2 text-left border-b-2 w-full">
-                    <h2 class="text-2xl mb-2 font-bold text-gray-600">Slider diák</h2>
-                    <a href="{{ route('slider.create') }}" class="text-2xl mb-2 font-bold text-primary"><i
-                            class="fa-regular fa-square-plus mr-2"></i>Új
-                        dia
-                    </a>
-                </div>
+        <div class="head pl-3">
+            <div class="px-4 flex justify-between flex-row py-2 text-left border-b-2 w-full">
+                <h2 class="text-2xl mb-2 font-bold text-gray-600">Slider diák</h2>
+                <a href="{{ route('slider.create') }}" class="text-2xl mb-2 font-bold text-[#f57425]"><i
+                        class="fa-regular fa-square-plus mr-2"></i>Új
+                    dia
+                </a>
             </div>
+        </div>
+        <div class="p-3 w-full overflow-x-scroll lg:overflow-hidden">
             <table class="min-w-full">
                 <thead class="bg-gray-200 border-b">
                     <tr>

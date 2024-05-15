@@ -62,3 +62,33 @@ header,
         rgba(255, 155, 78, 1) 100%
     );
 }
+
+@media (min-width: 320px) {
+    .container {
+        max-width: 90% !important;
+    }
+}
+
+/* Mobile menu */
+#menu_items.open {
+    display: block !important;
+    position: fixed;
+    top: 95px;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 40;
+    border-top: solid #fff 1px;
+    background: rgb(241, 109, 21);
+    background: linear-gradient(
+        0deg,
+        rgba(241, 109, 21, 1) 0%,
+        rgba(210, 130, 76, 1) 16%,
+        rgba(255, 155, 78, 1) 100%
+    );
+    padding: 15px;
+}
+
+#menu_items.open a {
+    border-bottom: 1px solid #fff;
+}

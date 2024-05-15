@@ -1,6 +1,6 @@
 <footer class="font-sans relative pt-5 pb-3 md:pb-6">
     <div class="container mx-auto px-4">
-        <div class="flex flex-wrap">
+        <div class="lg:flex lg:flex-wrap hidden">
             <div class="flex w-full md:w-4/12">
                 <div class="text-2xl px-4">
                     <h3 class="font-bold text-gray-900 dark:text-gray-100 mb-4">Menü</h3>

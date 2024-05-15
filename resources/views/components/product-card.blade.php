@@ -1,13 +1,13 @@
     <div
-        class="mx-3 mt-6 flex flex-col self-start rounded-lg
-      bg-white text-surface shadow-secondary-1 dark:bg-surface-dark
-       dark:text-white sm:shrink-0 sm:grow sm:basis-0 hover:scale-105 transition-all ease-in-out">
+        class="md:mx-3 mt-6 flex flex-col self-start rounded-lg
+      bg-white text-surface shadow-secondary-1
+        sm:shrink-0 sm:grow sm:basis-0 lg:hover:scale-105 transition-all ease-in-out max-w-[450px] lg:max-w-[500px] mx-auto">
         <a href="{{ route('product.show', $product->id) }}">
             <img class="h-[500px] w-full"
                 src="{{ $product->image ? asset('/storage/products/' . $product->image) : asset('images/no-image.png') }}"
                 alt="{{ $product->name }}" />
             <div class="p-6">
-                <h5 class="mb-2 text-xl font-medium leading-tight">{{ $product->name }}</h5>
+                <b class="text-xl font-medium leading-tight mb-3 block text-primary">{{ $product->name }}</b>
                 <p class="mb-4 text-base">
                     {{ $product->description }}
                 </p>

@@ -1,10 +1,14 @@
 <x-layout>
     <!-- Section: Design Block -->
     <section class="container mx-auto mb-20" style="margin-top: 40px">
+        <a href={{ route('product.index') }}
+            class=" font-bold text-3xl mb-10 block lg:text-xl lg:mt-20 text-[#f57425] lg:inline-block">
+            <i class="fa-solid fa-angles-left mr-1"></i>Vissza a
+            termékekhez </a>
         <div
             class="block rounded-lg bg-white shadow-[0_2px_15px_-3px_rgba(0,0,0,0.07),0_10px_20px_-2px_rgba(0,0,0,0.04)] dark:bg-neutral-700">
             <div class="flex flex-wrap items-start">
-                <div class="hidden shrink-0 grow-0 basis-auto lg:flex lg:w-6/12 xl:w-4/12">
+                <div class="max-w-full shrink-0 grow-0 basis-auto lg:flex lg:w-6/12 xl:w-4/12">
                     <img src="{{ $product->image ? asset('/storage/products/' . $product->image) : asset('images/no-image.png') }}"
                         alt="" class="w-full pt-14" />
                 </div>
