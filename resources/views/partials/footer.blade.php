@@ -6,7 +6,7 @@
                     <h3 class="font-bold text-gray-900 dark:text-gray-100 mb-4">Menü</h3>
                     @forelse ($menus as $menu)
                         <a href="{{ route('landing', $menu->url) }}"
-                            class="block text-base text-primary font-bold hover:underline mt-1">{{ $menu->name }}</a>
+                            class="block text-base text-white hover:text-[#f57425] font-bold hover:underline mt-1">{{ $menu->name }}</a>
                     @empty
                     @endforelse
                 </div>
@@ -16,15 +16,18 @@
                     <h3 class="font-bold text-gray-900 dark:text-gray-100 mb-4">Hivatkozások</h3>
                     @forelse ($links as $link)
                         <a href="{{ route('landing', $link->url) }}"
-                            class="block text-base text-primary font-bold hover:underline mt-1">{{ $link->name }}</a>
+                            class="block text-base text-white hover:text-[#f57425] font-bold hover:underline mt-1">{{ $link->name }}</a>
                     @empty
                     @endforelse
                 </div>
             </div>
             <div class="flex w-full md:w-4/12 px-4">
-                <div class="flex flex-wrap items-top">
-                    <div class="w-full ml-auto">
-                        <a href="/" class="font-bold text-2xl text-right text-gray-900 dark:text-gray-100">LOGO
+                <div class="flex flex-wrap items-top w-full">
+                    <div class="w-full ml-auto text-right">
+                        <a href="/" class="font-bold text-2xl text-right text-gray-900 dark:text-gray-100"><img
+                                class="h-12 inline-block"
+                                src="https://tailwindui.com/img/logos/mark.svg?color=indigo&shade=600"
+                                alt="Huniverse.eu">
                         </a>
                     </div>
                 </div>

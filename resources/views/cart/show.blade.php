@@ -67,9 +67,9 @@
                     </div>
                 </div>
             @empty
-                <h5 class="w-full text-left mb-10 mt-10 text-2xl font-bold">Jelenleg a kosár üres!</h5>
+                <h5 class="w-full text-left mb-10 lg:mb-20 mt-10 text-2xl font-bold">Jelenleg a kosár üres!</h5>
             @endforelse
-            <a href="{{ route('product.index') }}" class="text-2xl text-primary mb-32 block font-bold">Vissza a
+            <a href="{{ route('product.index') }}" class="text-2xl text-[#f57425] mb-32 block font-bold">Vissza a
                 vásárláshoz</a>
         </div>
         <!-- Sub total -->

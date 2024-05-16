@@ -66,7 +66,7 @@
     <div class="mb-6 flex items-center justify-between">
 
         <!-- TERMS LINK -->
-        <a href="#!" class="font-bold text-primary underline">ÁSZF</a>
+        <a href="/page/aszf" class="font-bold text-[#f57425] underline">ÁSZF</a>
     </div>
 
     <!-- Register button -->

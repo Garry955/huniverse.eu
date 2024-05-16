@@ -17,3 +17,10 @@ var searchInput = document.getElementById("search_input");
 search.addEventListener("click", function () {
     searchInput.classList.toggle("lg:hidden");
 });
+
+var mobileDropdownButton = document.getElementById("mobile_dropdown_button");
+var dropDownMenu = document.getElementById("dropdown_menu");
+mobileDropdownButton.addEventListener("click", function () {
+    dropDownMenu.classList.toggle("hidden");
+    dropDownMenu.classList.toggle("open");
+});

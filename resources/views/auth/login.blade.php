@@ -46,7 +46,7 @@
                         <div class="mb-6 flex items-center justify-between">
 
                             <!--Forgot password link-->
-                            <a href="#!" class="font-bold text-blue-500">Elfelejtett jelszó</a>
+                            <a href="#!" class="font-bold text-[#f57425]">Elfelejtett jelszó</a>
                         </div>
 
                         <!-- Login button -->
@@ -166,7 +166,7 @@
                         <div class="mb-6 flex items-center justify-between">
 
                             <!-- TERMS LINK -->
-                            <a href="#!" class="font-bold text-blue-500">ÁSZF</a>
+                            <a href="/page/aszf" class="font-bold text-[#f57425]">ÁSZF</a>
                         </div>
 
                         <!-- Register button -->

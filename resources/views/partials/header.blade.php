@@ -1,6 +1,7 @@
-<header class="fixed top-0 left-0 right-0 z-40 py-3">
+<header class="fixed top-0 left-0 right-0 z-40">
     <nav class="mx-auto flex max-w-7xl items-center justify-between  px-6 lg:px-8" aria-label="Global">
         <div class="flex lg:flex-1">
+            {{-- logo --}}
             <a href="/" class="-m-1.5 p-1.5">
                 <img class="h-8 w-auto" src="https://tailwindui.com/img/logos/mark.svg?color=indigo&shade=600"
                     alt="Huniverse.eu">
@@ -21,7 +22,7 @@
             </div>
         </div>
         {{-- menu items --}}
-        <div class="hidden lg:flex lg:gap-x-12" id="menu_items">
+        <div class="hidden lg:flex lg:gap-x-12 overflow-y-scroll lg:overflow-hidden" id="menu_items">
             <div class="lg:hidden">
                 {{-- MOBILE search --}}
                 <x-search></x-search>
@@ -40,18 +41,27 @@
                         <span aria-hidden="true">Bejelentkezés</span></a>
                 @endif
             </div>
-            <a href="{{ route('product.index') }}"
-                class="dropdown block py-6 px-3 text-lg font-semibold leading-6 text-gray-900 hover:text-primary {{ request()->is('product*') ? 'active' : '' }}">
-                Termékek</a>
-            @if ($groups)
-                <div class="dropdown-menu w-fit bg-white lg:rounded-lg absolute top-[72px] pb-3 hidden">
-                    @forelse ($groups as $group)
-                        <a class="block py-3 font-bold pl-5 pr-16 hover:bg-primary-100"
-                            href="/products/?search={{ $group->name }}">{{ $group->name }}</a>
-                    @empty
-                    @endforelse
+            <div class=" border-b-[1px] lg:border-none">
+                <a href="{{ route('product.index') }}" style="border: none;"
+                    class="dropdown w-[79%] md:w-[89%] lg:w-auto inline-block py-6 px-3 text-lg font-semibold leading-6 text-gray-900 border-none hover:text-primary {{ request()->is('product*') ? 'active' : '' }}">
+                    Termékek
+                </a>
+                {{-- mobile dropdown --}}
+                <div id="mobile_dropdown_button"
+                    class="lg:hidden text-xl relative inline-block z-40 text-center w-[20%] md:w-[10%] py-6">
+                    <i class="fa-solid fa-chevron-down"></i>
                 </div>
-            @endif
+                @if ($groups)
+                    <div id="dropdown_menu"
+                        class="dropdown-menu w-fit bg-inherit lg:rounded-b-md lg:absolute lg:top-[73px] pb-3 hidden">
+                        @forelse ($groups as $group)
+                            <a class="block py-3 font-bold pl-5 pr-16 hover:text-white"
+                                href="/products/?search={{ $group->name }}">{{ $group->name }}</a>
+                        @empty
+                        @endforelse
+                    </div>
+                @endif
+            </div>
             @forelse ($landings as $page)
                 <a href="{{ route('landing', $page->url) }}"
                     class="block py-6 px-3 text-lg font-semibold leading-6 text-gray-900 hover:text-primary {{ request()->is('page/' . $page->url) ? 'active' : '' }}">{{ $page->name }}</a>

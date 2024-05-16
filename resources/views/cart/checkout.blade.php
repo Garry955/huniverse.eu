@@ -10,9 +10,9 @@
         }
     </style>
     <div class="mb-20 lg:pt-20 container mx-auto">
-        <div class="mx-auto justify-center lg:px-6 lg:flex flex flex-col-reverse ">
+        <div class="mx-auto justify-center lg:px-6 lg:flex lg:flex-row flex flex-col-reverse ">
             <div class="rounded-lg lg:w-3/4">
-                <div class="mb-12 lg:w-3/4">
+                <div class="mb-12 lg:w-4/5">
                     <form method="POST" action="{{ route('order.store') }}">
                         @csrf
                         <input type="hidden" name="cart_items" id="cart_items" value="{{ $cartItems }}" />
@@ -104,7 +104,7 @@
                         <div class="mb-6 flex items-center justify-between">
 
                             <!-- TERMS LINK -->
-                            <a href="#!" class="font-bold text-blue-500">ÁSZF</a>
+                            <a href="/page/aszf" class="font-bold text-[#f57425]">ÁSZF</a>
                         </div>
                         @if (!auth()->user())
                             <div class="mb-5 block min-h-[1.5rem] ps-[1.5rem]">
