@@ -11,7 +11,7 @@
                 </a>
             </div>
         </div>
-        <div class="p-3 w-full overflow-x-scroll  lg:overflow-hidden">
+        <div class="p-3 w-full overflow-x-scroll">
             <table class="min-w-full">
                 <thead class="bg-gray-200 border-b">
                     <tr>
@@ -36,9 +36,12 @@
                     <x-admin-list>
                         @forelse ($landings as $landing)
                             <tr
-                                class="bg-white border-b transition duration-300 ease-in-out hover:bg-gray-100 {{ $landing->name == 'order-success' ? 'bg-red-300 hover:bg-red-200' : '' }}">
+                                class="bg-white border-b relative transition duration-300 ease-in-out hover:bg-gray-100 {{ $landing->name == 'order-success' ? 'bg-red-300 hover:bg-red-200' : '' }}">
                                 <td class="text-xl font-bold text-gray-900 px-6 py-4 whitespace-nowrap">
                                     {{ $landing->name }}
+
+                                    <a href="{{ route('landing.edit', $landing->id) }}"
+                                        class="absolute z-10 top-0 bottom-0 left-0 right-0"></a>
                                 </td>
                                 <td class="text-xl text-gray-900 font-light px-6 py-4 whitespace-nowrap">
                                     /{{ $landing->url }}/
@@ -50,8 +53,9 @@
                                     {{ $landing->place == '' ? 'sehol' : $landing->place }}
                                     {{ $landing->place == 'both' ? 'footer+header' : $landing->place }}
                                 </td>
-                                <td class="text-center text-2xl"><a href="{{ route('landing.edit', $landing->id) }}"
-                                        class="mr-8"><i class="fa-solid fa-pen-to-square text-primary"></i></a>
+                                <td class="text-center text-2xl relative z-30"><a
+                                        href="{{ route('landing.edit', $landing->id) }}" class="mr-8"><i
+                                            class="fa-solid fa-pen-to-square text-primary"></i></a>
                                     <form class="inline-block" action="{{ route('landing.destroy', $landing->id) }}"
                                         method="POST">
                                         @csrf

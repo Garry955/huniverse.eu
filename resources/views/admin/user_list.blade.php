@@ -11,7 +11,7 @@
                 </a>
             </div>
         </div>
-        <div class="p-3 w-full overflow-x-scroll  lg:overflow-hidden">
+        <div class="p-3 w-full overflow-x-scroll">
             <table class="min-w-full">
                 <thead class="bg-gray-200 border-b">
                     <tr>
@@ -42,10 +42,10 @@
                     <x-admin-list>
                         @forelse ($users as $user)
                             <tr
-                                class="{{ $user->is_admin ? 'bg-red-300 hover:bg-red-200' : 'bg-white hover:bg-gray-200' }} border-b transition duration-300 ease-in-out ">
+                                class="{{ $user->is_admin ? 'bg-red-300  hover:bg-red-200' : 'bg-white hover:bg-gray-200' }} relative border-b transition duration-300 ease-in-out ">
                                 <td class="px-6 py-4 whitespace-nowrap text-xl font-medium text-gray-900">
                                     <a href="{{ route('admin.editUser', $user->id) }}"
-                                        class="lg:hidden absolute z-10 top-0 bottom-0 left-0 right-0"></a>
+                                        class="absolute z-10 top-0 bottom-0 left-0 right-0"></a>
                                     {{ $user->id }}
                                 </td>
                                 <td class="text-xl text-gray-900 font-light px-6 py-4 whitespace-nowrap">
@@ -63,7 +63,7 @@
                                 <td class="text-xl text-gray-900 font-light px-6 py-4 whitespace-nowrap">
                                     {{ $user->address }}
                                 </td>
-                                <td class="text-center text-2xl">
+                                <td class="text-center text-2xl relative z-30">
                                     <a href="{{ route('admin.editUser', $user->id) }}" class="mr-8"><i
                                             class="fa-solid fa-pen-to-square text-primary"></i></a>
                                     <form class="inline-block" action="{{ route('admin.deleteUser', $user->id) }}"

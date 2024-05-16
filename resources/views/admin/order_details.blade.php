@@ -17,13 +17,13 @@
         <p class="text-xl mb-3">Telefonszám: <b>{{ $order->customer_phone }}</b></p>
         <p class="text-xl mb-3">Cím: <b>{{ $order->customer_address }}</b></p>
         <p class="text-xl mb-5 font-bold">Rendelt termékek:</p>
-        <div class="mx-auto justify-center px-6 md:flex md:space-x-6 xl:px-0">
+        <div class="mx-auto justify-center lg:px-6 lg:flex lg:space-x-6 xl:px-0">
             <div class="rounded-lg w-full">
                 @foreach ($orderItems as $item)
                     <div class="justify-between bg-white p-6 shadow-md sm:flex sm:justify-start">
                         <img src="{{ $item->product->image ? asset('/storage/products/' . $item->product->image) : asset('images/no-image.png') }}"
                             alt="product-image" class="w-full rounded-lg sm:w-40" />
-                        <div class="sm:ml-4 sm:flex sm:w-full sm:justify-between">
+                        <div class="sm:ml-4 sm:flex sm:w-full sm:justify-between border-b-2 pb-2 border-s-gray">
                             <div class="mt-5 sm:mt-0">
                                 <a href="{{ route('product.show', $item->product->id) }}"
                                     class="text-lg font-bold text-gray-900">{{ $item->product->name }}</a>
@@ -36,7 +36,7 @@
 
                                 </div>
                                 <div class="text-right">
-                                    <p class="inline-block text-xl">Részösszeg
+                                    <p class="inline-block text-xl">Részösszeg:
                                         <b>{{ $item->product->price * $item->quantity }} Ft</b>
                                     </p>
                                 </div>
@@ -65,7 +65,7 @@
             @csrf
             @method('delete')
             <button type="submit"
-                class="inline-block rounded bg-red-500 mt-5 w-1/3 pb-2 pt-3 text-sm font-medium uppercase leading-normal text-white shadow-primary-3 transition duration-150 ease-in-out hover:bg-red-600 hover:shadow-primary-2 focus:shadow-primary-2 focus:outline-none focus:ring-0 active:shadow-primary-2 dark:shadow-black/30 dark:hover:shadow-dark-strong dark:focus:shadow-dark-strong dark:active:shadow-dark-strong"
+                class="inline-block rounded bg-red-500 mt-8 w-1/2 lg:w-1/3 pb-2 pt-3 text-sm font-medium uppercase leading-normal text-white shadow-primary-3 transition duration-150 ease-in-out hover:bg-red-600 hover:shadow-primary-2 focus:shadow-primary-2 focus:outline-none focus:ring-0 active:shadow-primary-2 dark:shadow-black/30 dark:hover:shadow-dark-strong dark:focus:shadow-dark-strong dark:active:shadow-dark-strong"
                 data-twe-ripple-init data-twe-ripple-color="light">
                 Rendelés törlése
             </button>

@@ -35,7 +35,7 @@
                 <span>Diák</span>
             </a>
             <a href="{{ route('admin.logout') }}"
-                class="px-4 py-3 flex items-center space-x-4 rounded-md font-bold hover:text-primary">
+                class="flex px-4 py-3 lg:hidden items-center space-x-4 rounded-md font-bold hover:text-primary">
                 <i class="fa-solid fa-right-from-bracket"></i>
                 <span>Kijelentkezés</span>
             </a>

@@ -81,7 +81,7 @@
 
     <!-- Table -->
     <div class="bg-white rounded-lg p-4 shadow-md my-4">
-        <div class="lg:p-3 w-full overflow-x-scroll lg:overflow-hidden">
+        <div class="lg:p-3 w-full overflow-x-scroll">
             <div class="head">
                 <div class="px-4 flex justify-between flex-row py-2 text-left border-b-2 w-full">
                     <h2 class="text-2xl mb-2 font-bold text-gray-600">Termékek
@@ -129,7 +129,7 @@
                                 <img src="{{ $product->image ? asset('/storage/products/' . $product->image) : asset('images/no-image.png') }}"
                                     alt="product-image" class="w-[142px]" />
                                 <a href="{{ route('product.edit', $product->id) }}"
-                                    class="lg:hidden absolute z-10 top-0 bottom-0 left-0 right-0"></a>
+                                    class="absolute z-10 top-0 bottom-0 left-0 right-0"></a>
                             </td>
                             <td class="text-xl text-gray-900 font-light px-6 py-4 whitespace-nowrap">
                                 {{ $product->name }}

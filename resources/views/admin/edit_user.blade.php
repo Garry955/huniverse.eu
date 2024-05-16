@@ -1,9 +1,9 @@
 <x-admin-layout>
     <section class="container mx-auto">
         <div class="">
-            <div class="flex flex-wrap mt-20 justify-center lg:justify-between">
+            <div class="lg:flex lg:flex-wrap mt-32 lg:mt-10">
                 <!-- Left column container with background-->
-                <div class="shrink-1 mb-12 grow-0 basis-auto md:mb-10 md:w-9/12 md:shrink-0 lg:w-5/12 xl:w-5/12">
+                <div class="shrink-1 mb-12 grow-0 basis-auto lg:mb-10  lg:shrink-0 lg:w-10/12">
                     <form method="POST" action="{{ route('admin.updateUser', $user->id) }}">
                         @csrf
                         <!-- Separator between social media sign in and email/password sign in -->

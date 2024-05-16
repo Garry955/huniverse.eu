@@ -30,8 +30,8 @@
     @include('partials.admin_header');
     @include('partials.admin_sidebar');
     <!-- Main content -->
-    <div class="lg:flex gap-4 items-stretch" class="main">
-        <div class="lg:w-full min-h-screen lg:ml-64 px-6 lg:py-8 lg:mt-[40px] mt-20">
+    <div class="" class="main">
+        <div class="min-h-screen lg:ml-64 px-6 lg:py-8 lg:mt-[40px] mt-20">
             {{ $slot }}
         </div>
     </div>

@@ -83,7 +83,7 @@
             <!-- Register button -->
             <div class="text-center lg:text-left">
                 <button type="submit"
-                    class="inline-block rounded bg-primary px-16 pb-2 pt-3 w-1/3 text-sm font-medium uppercase leading-normal text-white shadow-primary-3 transition duration-150 ease-in-out hover:bg-primary-accent-300 hover:shadow-primary-2 focus:bg-primary-accent-300 focus:shadow-primary-2 focus:outline-none focus:ring-0 active:bg-primary-600 active:shadow-primary-2 dark:shadow-black/30 dark:hover:shadow-dark-strong dark:focus:shadow-dark-strong dark:active:shadow-dark-strong"
+                    class="inline-block rounded bg-primary lg:px-4 pb-2 pt-3 w-1/2 lg:w-1/3 text-sm font-medium uppercase leading-normal text-white shadow-primary-3 transition duration-150 ease-in-out hover:bg-primary-accent-300 hover:shadow-primary-2 focus:bg-primary-accent-300 focus:shadow-primary-2 focus:outline-none focus:ring-0 active:bg-primary-600 active:shadow-primary-2 dark:shadow-black/30 dark:hover:shadow-dark-strong dark:focus:shadow-dark-strong dark:active:shadow-dark-strong"
                     data-twe-ripple-init data-twe-ripple-color="light">
                     <i class="fa-solid fa-pen-to-square text-xl mb-[-1px] mr-2"></i>Aloldal módosítása </button>
             </div>

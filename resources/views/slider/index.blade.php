@@ -12,7 +12,7 @@
                 </a>
             </div>
         </div>
-        <div class="p-3 w-full overflow-x-scroll lg:overflow-hidden">
+        <div class="p-3 w-full overflow-x-scroll">
             <table class="min-w-full">
                 <thead class="bg-gray-200 border-b">
                     <tr>
@@ -36,9 +36,14 @@
                 <tbody>
                     <x-admin-list>
                         @forelse ($sliders as $slider)
-                            <tr class="bg-white border-b transition duration-300 ease-in-out hover:bg-gray-100">
+                            <tr
+                                class="bg-white relative border-b transition duration-300 ease-in-out hover:bg-gray-100">
                                 <td class="px-6 py-4 whitespace-nowrap text-xl font-medium text-gray-900">
-                                    {{ $slider->id }}</td>
+                                    {{ $slider->id }}
+
+                                    <a href="{{ route('slider.edit', $slider->id) }}"
+                                        class="absolute z-10 top-0 bottom-0 left-0 right-0"></a>
+                                </td>
                                 <td class="text-xl text-gray-900 font-light px-6 py-4 whitespace-nowrap">
                                     <img src="{{ $slider->image ? asset('/storage/slider/' . $slider->image) : asset('images/no-image.png') }}"
                                         alt="slider-image" class="w-[142px]" />
@@ -51,7 +56,7 @@
                                     class="text-xl max-w-20 overflow-hidden text-gray-900 font-light px-6 py-4 whitespace-nowrap">
                                     <p class="whitespace-break-spaces">{{ $slider->text }}</p>
                                 </td>
-                                <td class="text-center text-2xl">
+                                <td class="text-center text-2xl relative z-30">
                                     <a href="{{ route('slider.edit', $slider->id) }}" class="mr-8"><i
                                             class="fa-solid fa-pen-to-square text-primary"></i></a>
                                     <form class="inline-block" action="{{ route('slider.destroy', $slider->id) }}"

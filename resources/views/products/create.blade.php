@@ -11,8 +11,8 @@
             </div>
             <!-- Image input -->
             <p class="mb-5 text-xl text-red-500 font-bold">A képet célszerű 16:9-es formátumban kiválasztani!</p>
-            <div class="flex flex-row  mb-10">
-                <div class="w-2/5 rounded-l-lg p-4 flex flex-col justify-center items-center ">
+            <div class="lg:flex lg:flex-row  mb-10">
+                <div class="w-2/5 rounded-l-lg p-4 flex flex-col lg:justify-center lg:items-center ">
                     <label
                         class="cursor-pointer hover:opacity-80 inline-flex items-center shadow-md my-2 px-2 py-2 bg-primary text-gray-50 border border-transparent
                 rounded-md font-semibold text-xs uppercase tracking-widest hover:bg-primary-600 active:bg-primary focus:outline-none 
@@ -23,7 +23,7 @@
                     </label>
                 </div>
                 <div
-                    class="w-3/5 ml-20 relative order-first md:order-last md:h-auto flex justify-center items-center border border-dashed border-gray-400 col-span-2 m-2 rounded-lg bg-no-repeat bg-center bg-origin-padding bg-cover">
+                    class="max-w-[620px] lg:max-w-none lg:w-3/5 xl:ml-20 relative order-first md:order-last md:h-auto flex justify-center items-center border border-dashed border-gray-400 col-span-2 m-2 rounded-lg bg-no-repeat bg-center bg-origin-padding bg-cover">
                     <span class="text-gray-400 w-full overflow-hidden m-0 pt-[56.25%] relative">
                         <img id="preview" src="#" alt="image"
                             class="absolute top-1/2 left-1/2 translate-x-[-50%] translate-y-[-50%]"
@@ -126,7 +126,7 @@
                 <select id="countries" name="product_group"
                     style="background-color: light-dark(rgb(232, 240, 254), rgba(70, 90, 126, 0.4)) !important;"
                     class="mt-3 bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
-                    <option value='' selected>Termékcsalád</option>
+                    <option value='' selected>Termékcsoport</option>
                     @forelse ($groups as $group)
                         <option value="{{ $group->id }}">{{ $group->name }}</option>
                     @empty

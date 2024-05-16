@@ -7,7 +7,7 @@
                 <h2 class="text-2xl mb-2 font-bold text-gray-600">Rendelések</h2>
             </div>
         </div>
-        <div class="p-3 w-full overflow-x-scroll lg:overflow-hidden">
+        <div class="p-3 w-full overflow-x-scroll">
             <table class="min-w-full">
                 <thead class="bg-gray-200 border-b">
                     <tr>
@@ -35,7 +35,7 @@
                                 class="bg-white border-b relative transition duration-300 ease-in-out hover:bg-gray-100">
                                 <td class="px-6 py-4 whitespace-nowrap text-xl font-medium text-gray-900">
                                     <a href="{{ route('order.details', $order->id) }}"
-                                        class="lg:hidden absolute z-10 top-0 bottom-0 left-0 right-0"></a>
+                                        class="absolute z-10 top-0 bottom-0 left-0 right-0"></a>
                                     {{ $order->id }}
                                 </td>
                                 <td class="text-xl text-gray-900 font-light px-6 py-4 whitespace-nowrap">
