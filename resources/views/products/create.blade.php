@@ -10,7 +10,6 @@
                 </p>
             </div>
             <!-- Image input -->
-            <p class="mb-5 text-xl text-red-500 font-bold">A képet célszerű 16:9-es formátumban kiválasztani!</p>
             <div class="lg:flex lg:flex-row  mb-10">
                 <div class="w-2/5 rounded-l-lg p-4 flex flex-col lg:justify-center lg:items-center ">
                     <label
